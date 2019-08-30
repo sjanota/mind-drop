@@ -24,4 +24,3 @@ function Cards() {
 }
 
 export default Cards;
-s
