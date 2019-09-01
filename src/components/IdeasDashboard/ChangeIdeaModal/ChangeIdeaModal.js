@@ -1,12 +1,12 @@
 import React from 'react';
-import './ChangeCardModal.css';
+import './ChangeIdeaModal.css';
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function ChangeCardModal({show, onSave, onCancel, value}) {
+function ChangeIdeaModal({show, onSave, onCancel, value}) {
   const [title, setTitle] = React.useState(value.title || "");
   const [text, setText] = React.useState(value.text || "");
   const [label, setLabel] = React.useState(value.label || "Dla mnie");
@@ -65,4 +65,4 @@ function ChangeCardModal({show, onSave, onCancel, value}) {
   </Modal>
 }
 
-export default ChangeCardModal;
+export default ChangeIdeaModal;

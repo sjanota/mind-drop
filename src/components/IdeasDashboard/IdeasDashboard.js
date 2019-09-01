@@ -1,6 +1,6 @@
 import React from 'react';
-import './Cards.css';
-import ChangeCardModal from "./ChangeCardModal/ChangeCardModal";
+import './IdeasDashboard.css';
+import ChangeCardModal from "./ChangeIdeaModal/ChangeIdeaModal";
 import AddCardCard from "../AddCardCard/AddCardCard";
 import CardCard from "../CardCard/CardCard";
 
@@ -66,7 +66,7 @@ const initialState = {
 };
 
 
-function Cards({labelFilter}) {
+function IdeasDashboard({labelFilter}) {
   const cards = JSON
     .parse(localStorage.getItem('cards'))
     .map(({label, ...card}) => !label ? card : {...card, labels: [label]})
@@ -77,7 +77,7 @@ function Cards({labelFilter}) {
     localStorage.setItem('cards', JSON.stringify(state.cards));
   }, [state.cards]);
 
-  return <div className={"Cards"}>
+  return <div className={"IdeasDashboard"}>
     {state.filteredCards.map((card, idx) => <CardCard
       key={idx}
       card={card}
@@ -96,4 +96,4 @@ function Cards({labelFilter}) {
   </div>
 }
 
-export default Cards;
+export default IdeasDashboard;

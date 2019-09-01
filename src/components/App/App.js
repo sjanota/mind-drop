@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from "../Navbar/Navbar";
-import Cards from "../Cards/Cards";
+import Cards from "../IdeasDashboard/IdeasDashboard";
 
 function App() {
   const [labelFilter, setLabelFilter] = React.useState("");

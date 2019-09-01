@@ -1,16 +1,16 @@
-.Cards {
+.IdeasDashboard {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
 }
 
-.Cards .card {
+.IdeasDashboard .card {
     margin: 20px;
     width: 15rem;
     /*height: 15rem;*/
     min-width: 15rem;
 }
 
-.Cards .AddCardCard {
+.IdeasDashboard .AddCardCard {
     height: 15rem;
 }
