@@ -13,7 +13,7 @@ function CardCard({card, onDelete, onEdit}) {
       <Card.Text>{card.text}</Card.Text>
     </Card.Body>
     <Card.Footer className={"text-right"}>
-      <Button variant={"primary"} size="sm" onClick={onEdit}>
+      <Button variant={"secondary"} size="sm" onClick={onEdit}>
         <Octicon icon={Pencil} size='small'/>
       </Button>
       <Button variant={"danger"} size="sm" onClick={onDelete}>

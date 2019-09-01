@@ -1,11 +1,16 @@
 .Cards {
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
 }
 
 .Cards .card {
     margin: 20px;
     width: 15rem;
-    height: 15rem;
+    /*height: 15rem;*/
     min-width: 15rem;
+}
+
+.Cards .AddCardCard {
+    height: 15rem;
 }
