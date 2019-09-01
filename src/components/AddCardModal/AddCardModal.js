@@ -6,10 +6,10 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function AddCardModal({show, onSaveAndClose,onClose}) {
-  const [title, setTitle] = React.useState("");
-  const [text, setText] = React.useState("");
-  const [label, setLabel] = React.useState("");
+function AddCardModal({show, onSaveAndClose, onClose, initialValue}) {
+  const [title, setTitle] = React.useState(initialValue.title);
+  const [text, setText] = React.useState(initialValue.text);
+  const [label, setLabel] = React.useState(initialValue.label);
 
   function withCleanup(callback) {
     return () => {

@@ -2,10 +2,10 @@ import React from 'react';
 import './CardCard.css';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Octicon, {Trashcan} from "@primer/octicons-react";
+import Octicon, {Trashcan, Pencil} from "@primer/octicons-react";
 import Badge from "react-bootstrap/Badge";
 
-function CardCard({card, onDelete}) {
+function CardCard({card, onDelete, onEdit}) {
   return <Card style={{}}>
     <Card.Body>
       <Card.Title>{card.title}</Card.Title>
@@ -13,6 +13,9 @@ function CardCard({card, onDelete}) {
       <Card.Text>{card.text}</Card.Text>
     </Card.Body>
     <Card.Footer className={"text-right"}>
+      <Button variant={"primary"} size="sm" onClick={onEdit}>
+        <Octicon icon={Pencil} size='small'/>
+      </Button>
       <Button variant={"danger"} size="sm" onClick={onDelete}>
         <Octicon icon={Trashcan} size='small'/>
       </Button>
