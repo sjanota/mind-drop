@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AddCardCard from "./AddCardCard";
+import AddIdeaCard from './AddIdeaCard';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<AddCardCard />, div);
+  ReactDOM.render(<AddIdeaCard />, div);
   ReactDOM.unmountComponentAtNode(div);
 });
