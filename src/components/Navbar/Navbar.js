@@ -3,11 +3,13 @@ import './Navbar.css';
 import BootstrapNavbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import Brand from "./Brand/Brand";
+
 
 function Navbar({labelFilter, setLabelFilter}) {
-  return <BootstrapNavbar bg={"dark"} variant={"dark"}>
-    <BootstrapNavbar.Brand>Mind Drop</BootstrapNavbar.Brand>
-      <Form inline>
+  return <BootstrapNavbar bg={"dark"} variant={"dark"} className={"Navbar"}>
+    <Brand/>
+      <Form>
         <InputGroup>
           <InputGroup.Prepend>
             <InputGroup.Text id="basic-addon1">Label</InputGroup.Text>
