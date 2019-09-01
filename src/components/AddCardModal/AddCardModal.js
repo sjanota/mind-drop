@@ -9,11 +9,13 @@ import Col from "react-bootstrap/Col";
 function AddCardModal({show, onSaveAndClose,onClose}) {
   const [title, setTitle] = React.useState("");
   const [text, setText] = React.useState("");
+  const [label, setLabel] = React.useState("");
 
   function withCleanup(callback) {
     return () => {
       setText("");
       setTitle("");
+      setLabel("");
       callback();
     }
   }
@@ -30,6 +32,15 @@ function AddCardModal({show, onSaveAndClose,onClose}) {
             <Form.Control value={title} onChange={(e) => setTitle(e.target.value)} placeholder={"Title"}/>
           </Col>
         </Form.Group>
+        <Form.Group as={Row}>
+          <Form.Label column sm={2}>Label:</Form.Label>
+          <Col>
+            <Form.Control as="select" value={label} onChange={(e) => setLabel(e.target.value)} placeholder={"Label"}>
+              <option>Dla mnie</option>
+              <option>Dla kogoś</option>
+            </Form.Control>
+          </Col>
+        </Form.Group>
         <Form.Label>Text:</Form.Label>
         <Form.Control value={text} onChange={(e) => setText(e.target.value)} as={"textarea"} rows={5}/>
       </Form>
@@ -40,7 +51,8 @@ function AddCardModal({show, onSaveAndClose,onClose}) {
       </Button>
       <Button variant="primary" onClick={withCleanup(() => onSaveAndClose({
         title: title,
-        text: text
+        text: text,
+        label: label
       }))}>
         Save Changes
       </Button>

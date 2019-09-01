@@ -4,10 +4,12 @@ import Navbar from "../Navbar/Navbar";
 import Cards from "../Cards/Cards";
 
 function App() {
+  const [labelFilter, setLabelFilter] = React.useState("");
+
   return (
     <div className="App">
-      <Navbar/>
-      <Cards/>
+      <Navbar labelFilter={labelFilter} setLabelFilter={setLabelFilter}/>
+      <Cards labelFilter={labelFilter}/>
     </div>
   );
 }
