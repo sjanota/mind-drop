@@ -4,6 +4,12 @@ import AddCardModal from "../AddCardModal/AddCardModal";
 import AddCardCard from "../AddCardCard/AddCardCard";
 import CardCard from "../CardCard/CardCard";
 
+const emptyCard = {
+  title: "",
+  text: "",
+  labels: []
+};
+
 function Cards({labelFilter}) {
   const [cards, setCards] = React.useState(JSON.parse(localStorage.getItem('cards')) || []);
   const [showCreateModal, setShowCreateModal] = React.useState(false);
@@ -36,7 +42,7 @@ function Cards({labelFilter}) {
                        onEdit={() => handleOpenEditModal(idx)}/>
     })}
     <AddCardCard onClick={handleOpenCreateModal}/>
-    <AddCardModal show={showCreateModal} onClose={handleCloseCreateModal} initialValue={{}} onSaveAndClose={(card) => {
+    <AddCardModal show={showCreateModal} onClose={handleCloseCreateModal} initialValue={emptyCard} onSaveAndClose={(card) => {
       addCard(card);
       handleCloseCreateModal();
     }}/>
