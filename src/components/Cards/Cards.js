@@ -1,6 +1,6 @@
 import React from 'react';
 import './Cards.css';
-import AddCardModal from "../AddCardModal/AddCardModal";
+import ChangeCardModal from "./ChangeCardModal/ChangeCardModal";
 import AddCardCard from "../AddCardCard/AddCardCard";
 import CardCard from "../CardCard/CardCard";
 
@@ -10,50 +10,89 @@ const emptyCard = {
   labels: []
 };
 
+const ADD_ITEM = 'ADD_ITEM';
+const addItem = () => ({type: ADD_ITEM});
+
+const EDIT_ITEM = 'EDIT_ITEM';
+const editItem = (item) => ({type: EDIT_ITEM, value: item});
+
+const ITEM_DELETED = 'ITEM_DELETED';
+const itemDeleted = (item) => ({type: ITEM_DELETED, value: item});
+
+const CHANGE_APPLIED = 'CHANGE_APPLIED';
+const changeApplied = (item) => ({type: CHANGE_APPLIED, value: item});
+
+const CHANGE_CANCELED = 'CHANGE_CANCELED';
+const changeCanceled = () => ({type: CHANGE_CANCELED});
+
+const itemsChanged = (state) => {
+  return {...state, filteredCards: state.labelFilter ? state.cards.filter(c => c.label === state.labelFilter) : state.cards}
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case ADD_ITEM:
+      return {...state, showModal: true, modalState: emptyCard};
+    case EDIT_ITEM:
+      return {...state, showModal: true, modalState: action.value, editItem: state.cards.indexOf(action.value)};
+    case ITEM_DELETED:
+      const idx = state.cards.indexOf(action.value);
+      return itemsChanged({...state, cards: [...state.cards.slice(0, idx), ...state.cards.slice(idx + 1, state.cards.length)]});
+    case CHANGE_CANCELED:
+      return {...state, showModal: false, editItem: null};
+    case CHANGE_APPLIED: {
+      const cards = state.editItem != null
+        ? [
+          ...state.cards.slice(0, state.editItem),
+          action.value,
+          ...state.cards.slice(state.editItem + 1, state.cards.length)
+        ]
+        : [...state.cards, action.value];
+      return itemsChanged({...state, showModal: false, editItem: null, cards});
+    }
+    default:
+      console.log("Unexpected action", action);
+      return state;
+  }
+};
+
+const initialState = {
+  showModal: false,
+  modalState: emptyCard,
+  editItem: null,
+  labelFilter: "",
+  filteredCards: [],
+  cards: []
+};
+
+
 function Cards({labelFilter}) {
-  const [cards, setCards] = React.useState(JSON.parse(localStorage.getItem('cards')) || []);
-  const [showCreateModal, setShowCreateModal] = React.useState(false);
-  const [showEditModal, setShowEditModal] = React.useState(false);
-  const [editItemIdx, setEditItemIdx] = React.useState(null);
+  const cards = JSON
+    .parse(localStorage.getItem('cards'))
+    .map(({label, ...card}) => !label ? card : {...card, labels: [label]})
+    || [];
+  const [state, dispatch] = React.useReducer(reducer, {...initialState, cards, labelFilter}, itemsChanged);
 
-  const storeCards = (cards) => {
-    localStorage.setItem('cards', JSON.stringify(cards));
-    return cards
-  };
-  const handleCloseCreateModal = () => setShowCreateModal(false);
-  const handleOpenCreateModal = () => setShowCreateModal(true);
-  const handleCloseEditModal = () => setShowEditModal(false);
-  const handleOpenEditModal = (idx) => {
-    setEditItemIdx(idx);
-    setShowEditModal(true);
-  };
-  const addCard = (card) => setCards(old => storeCards([...old, card]));
-  const editCard = (card, idx) => setCards(old =>
-    storeCards([...old.slice(0, idx), card, ...old.slice(idx + 1, old.length)])
-  );
-  const deleteCard = (idx) => setCards(old => storeCards([...old.slice(0, idx), ...old.slice(idx + 1, old.length)]));
-
-  const filteredCards = labelFilter ? cards.filter(c => c.label === labelFilter) : cards;
+  React.useEffect(() => {
+    localStorage.setItem('cards', JSON.stringify(state.cards));
+  }, [state.cards]);
 
   return <div className={"Cards"}>
-    {filteredCards.map((card) => {
-      const idx = cards.indexOf(card);
-      return <CardCard key={card.title} card={card} onDelete={() => deleteCard(idx)}
-                       onEdit={() => handleOpenEditModal(idx)}/>
-    })}
-    <AddCardCard onClick={handleOpenCreateModal}/>
-    <AddCardModal show={showCreateModal} onClose={handleCloseCreateModal} initialValue={emptyCard} onSaveAndClose={(card) => {
-      addCard(card);
-      handleCloseCreateModal();
-    }}/>
-    {showEditModal ?
-      <AddCardModal show={showEditModal} onClose={handleCloseEditModal} initialValue={cards[editItemIdx]}
-                    onSaveAndClose={(card) => {
-                      editCard(card, editItemIdx);
-                      setEditItemIdx(null);
-                      handleCloseEditModal();
-                    }}/> : <></>
-    }
+    {state.filteredCards.map((card, idx) => <CardCard
+      key={idx}
+      card={card}
+      onDelete={() => dispatch(itemDeleted(card))}
+      onEdit={() => dispatch(editItem(card))}
+    />)}
+    <AddCardCard
+      onClick={() => dispatch(addItem())}
+    />
+    <ChangeCardModal
+      show={state.showModal}
+      onCancel={() => dispatch(changeCanceled())}
+      onSave={(card) => dispatch(changeApplied(card))}
+      value={state.modalState}
+    />
   </div>
 }
 

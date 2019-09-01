@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AddCardModal from "./AddCardModal";
+import ChangeCardModal from './ChangeCardModal';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<AddCardModal />, div);
+  ReactDOM.render(<ChangeCardModal />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

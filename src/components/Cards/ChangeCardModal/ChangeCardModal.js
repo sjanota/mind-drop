@@ -1,30 +1,30 @@
 import React from 'react';
-import './AddCardModal.css';
+import './ChangeCardModal.css';
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-function AddCardModal({show, onSaveAndClose, onClose, initialValue}) {
-  const [title, setTitle] = React.useState(initialValue.title || "");
-  const [text, setText] = React.useState(initialValue.text || "");
-  const [label, setLabel] = React.useState(initialValue.label || "Dla mnie");
+function ChangeCardModal({show, onSave, onCancel, value}) {
+  const [title, setTitle] = React.useState(value.title || "");
+  const [text, setText] = React.useState(value.text || "");
+  const [label, setLabel] = React.useState(value.label || "Dla mnie");
   const [firstInputRef, setFirstInputRef] = React.useState(null);
 
-  React.useEffect( () => {
-    setTitle(initialValue.title || "");
-    setText(initialValue.text || "");
-    setLabel(initialValue.label || "Dla mnie");
-  }, [initialValue, firstInputRef]);
+  React.useEffect(() => {
+    setTitle(value.title || "");
+    setText(value.text || "");
+    setLabel((value.labels && value.labels[0]) || "Dla mnie");
+  }, [value, firstInputRef]);
 
   React.useEffect(() => {
-    if(firstInputRef) {
+    if (firstInputRef) {
       firstInputRef.focus()
     }
   }, [firstInputRef]);
 
-  return <Modal show={show} onHide={onClose} centered>
+  return <Modal show={show} onHide={onCancel} centered>
     <Modal.Header closeButton>
       <Modal.Title>New card</Modal.Title>
     </Modal.Header>
@@ -33,7 +33,8 @@ function AddCardModal({show, onSaveAndClose, onClose, initialValue}) {
         <Form.Group as={Row}>
           <Form.Label column sm={2}>Title:</Form.Label>
           <Col>
-            <Form.Control ref={setFirstInputRef} value={title} onChange={(e) => setTitle(e.target.value)} placeholder={"Title"}/>
+            <Form.Control ref={setFirstInputRef} value={title} onChange={(e) => setTitle(e.target.value)}
+                          placeholder={"Title"}/>
           </Col>
         </Form.Group>
         <Form.Group as={Row}>
@@ -50,13 +51,13 @@ function AddCardModal({show, onSaveAndClose, onClose, initialValue}) {
       </Form>
     </Modal.Body>
     <Modal.Footer>
-      <Button variant="secondary" onClick={onClose}>
+      <Button variant="secondary" onClick={onCancel}>
         Close
       </Button>
-      <Button variant="primary" onClick={() => onSaveAndClose({
+      <Button variant="primary" onClick={() => onSave({
         title: title,
         text: text,
-        label: label
+        labels: [label]
       })}>
         Save Changes
       </Button>
@@ -64,4 +65,4 @@ function AddCardModal({show, onSaveAndClose, onClose, initialValue}) {
   </Modal>
 }
 
-export default AddCardModal;
+export default ChangeCardModal;
