@@ -2,7 +2,7 @@ import React from 'react';
 import './IdeasDashboard.css';
 import ChangeCardModal from "./ChangeIdeaModal/ChangeIdeaModal";
 import AddCardCard from "../AddCardCard/AddCardCard";
-import CardCard from "../CardCard/CardCard";
+import CardCard from "./IdeaCard/IdeaCard";
 
 const emptyCard = {
   title: "",

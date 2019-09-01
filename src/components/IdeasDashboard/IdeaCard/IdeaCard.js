@@ -1,11 +1,11 @@
 import React from 'react';
-import './CardCard.css';
+import './IdeaCard.css';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Octicon, {Trashcan, Pencil} from "@primer/octicons-react";
 import Badge from "react-bootstrap/Badge";
 
-function CardCard({card, onDelete, onEdit}) {
+function IdeaCard({card, onDelete, onEdit}) {
   return <Card style={{}}>
     <Card.Body>
       <Card.Title>{card.title}</Card.Title>
@@ -23,4 +23,4 @@ function CardCard({card, onDelete, onEdit}) {
   </Card>
 }
 
-export default CardCard;
+export default IdeaCard;
