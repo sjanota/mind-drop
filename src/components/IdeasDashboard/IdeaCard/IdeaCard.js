@@ -9,7 +9,7 @@ function IdeaCard({card, onDelete, onEdit}) {
   return <Card style={{}}>
     <Card.Body>
       <Card.Title>{card.title}</Card.Title>
-      <Card.Subtitle><Badge variant={"primary"}>{card.label}</Badge></Card.Subtitle>
+      <Card.Subtitle>{card.labels.map(label => <Badge variant={"primary"} key={label}>{label}</Badge>)}</Card.Subtitle>
       <Card.Text>{card.text}</Card.Text>
     </Card.Body>
     <Card.Footer className={"text-right"}>
