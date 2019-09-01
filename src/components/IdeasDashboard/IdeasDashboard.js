@@ -10,6 +10,9 @@ const emptyCard = {
   labels: []
 };
 
+const ITEMS_FILTERED = 'ITEMS_FILTERED';
+const itemsFiltered = (labelFilter) => ({type: ITEMS_FILTERED, value: labelFilter});
+
 const ADD_ITEM = 'ADD_ITEM';
 const addItem = () => ({type: ADD_ITEM});
 
@@ -26,11 +29,16 @@ const CHANGE_CANCELED = 'CHANGE_CANCELED';
 const changeCanceled = () => ({type: CHANGE_CANCELED});
 
 const itemsChanged = (state) => {
-  return {...state, filteredCards: state.labelFilter ? state.cards.filter(c => c.label === state.labelFilter) : state.cards}
+  return {
+    ...state,
+    filteredCards: state.labelFilter ? state.cards.filter(c => c.labels.indexOf(state.labelFilter) > -1) : state.cards
+  }
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case ITEMS_FILTERED:
+      return itemsChanged({...state, labelFilter: action.value});
     case ADD_ITEM:
       return {...state, showModal: true, modalState: emptyCard};
     case EDIT_ITEM:
@@ -60,7 +68,6 @@ const initialState = {
   showModal: false,
   modalState: emptyCard,
   editItem: null,
-  labelFilter: "",
   filteredCards: [],
   cards: []
 };
@@ -71,7 +78,11 @@ function IdeasDashboard({labelFilter}) {
     .parse(localStorage.getItem('cards'))
     .map(({label, ...card}) => !label ? card : {...card, labels: [label]})
     || [];
-  const [state, dispatch] = React.useReducer(reducer, {...initialState, cards, labelFilter}, itemsChanged);
+  const [state, dispatch] = React.useReducer(reducer, {...initialState, cards}, itemsChanged);
+
+  React.useEffect(() => {
+    dispatch(itemsFiltered(labelFilter))
+  }, [labelFilter]);
 
   React.useEffect(() => {
     localStorage.setItem('cards', JSON.stringify(state.cards));
