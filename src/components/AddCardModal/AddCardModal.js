@@ -7,18 +7,22 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function AddCardModal({show, onSaveAndClose, onClose, initialValue}) {
-  const [title, setTitle] = React.useState(initialValue.title);
-  const [text, setText] = React.useState(initialValue.text);
-  const [label, setLabel] = React.useState(initialValue.label);
+  const [title, setTitle] = React.useState(initialValue.title || "");
+  const [text, setText] = React.useState(initialValue.text || "");
+  const [label, setLabel] = React.useState(initialValue.label || "Dla mnie");
+  const [firstInputRef, setFirstInputRef] = React.useState(null);
 
-  function withCleanup(callback) {
-    return () => {
-      setText("");
-      setTitle("");
-      setLabel("");
-      callback();
+  React.useEffect( () => {
+    setTitle(initialValue.title || "");
+    setText(initialValue.text || "");
+    setLabel(initialValue.label || "Dla mnie");
+  }, [initialValue, firstInputRef]);
+
+  React.useEffect(() => {
+    if(firstInputRef) {
+      firstInputRef.focus()
     }
-  }
+  }, [firstInputRef]);
 
   return <Modal show={show} onHide={onClose} centered>
     <Modal.Header closeButton>
@@ -29,7 +33,7 @@ function AddCardModal({show, onSaveAndClose, onClose, initialValue}) {
         <Form.Group as={Row}>
           <Form.Label column sm={2}>Title:</Form.Label>
           <Col>
-            <Form.Control value={title} onChange={(e) => setTitle(e.target.value)} placeholder={"Title"}/>
+            <Form.Control ref={setFirstInputRef} value={title} onChange={(e) => setTitle(e.target.value)} placeholder={"Title"}/>
           </Col>
         </Form.Group>
         <Form.Group as={Row}>
@@ -46,14 +50,14 @@ function AddCardModal({show, onSaveAndClose, onClose, initialValue}) {
       </Form>
     </Modal.Body>
     <Modal.Footer>
-      <Button variant="secondary" onClick={withCleanup(onClose)}>
+      <Button variant="secondary" onClick={onClose}>
         Close
       </Button>
-      <Button variant="primary" onClick={withCleanup(() => onSaveAndClose({
+      <Button variant="primary" onClick={() => onSaveAndClose({
         title: title,
         text: text,
         label: label
-      }))}>
+      })}>
         Save Changes
       </Button>
     </Modal.Footer>

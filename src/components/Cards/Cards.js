@@ -30,11 +30,10 @@ function Cards({labelFilter}) {
   const filteredCards = labelFilter ? cards.filter(c => c.label === labelFilter) : cards;
 
   return <div className={"Cards"}>
-    {filteredCards.map((card, idx) => {
-      console.log(card.title, idx);
-      return <CardCard key={card.title} card={card} onDelete={() => deleteCard(idx)}
+    {filteredCards.map((card, idx) =>
+      <CardCard key={card.title} card={card} onDelete={() => deleteCard(idx)}
                        onEdit={() => handleOpenEditModal(idx)}/>
-    })}
+    )}
     <AddCardCard onClick={handleOpenCreateModal}/>
     <AddCardModal show={showCreateModal} onClose={handleCloseCreateModal} initialValue={{}} onSaveAndClose={(card) => {
       addCard(card);

@@ -1,9 +1,11 @@
 .Cards {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .Cards .card {
     margin: 20px;
     width: 15rem;
     height: 15rem;
+    min-width: 15rem;
 }
