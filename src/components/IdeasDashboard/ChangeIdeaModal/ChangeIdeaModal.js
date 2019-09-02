@@ -11,7 +11,7 @@ function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstre
   const [title, setTitle] = React.useState(value.title || "");
   const [text, setText] = React.useState(value.text || "");
   const [labels, setLabels] = React.useState(value.labels || []);
-  const firstInputRef = React.useRef(null);
+  const firstInputRef = React.useRef();
 
   const resetValue = () => {
     setTitle(value.title || "");
@@ -21,12 +21,6 @@ function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstre
 
   React.useEffect(resetValue, [value]);
 
-  React.useEffect(() => {
-    if (firstInputRef.current) {
-      firstInputRef.current.focus()
-    }
-  }, [firstInputRef]);
-
   const withClear = (cb) => (arg) => {
     resetValue();
     cb(arg)
@@ -34,7 +28,7 @@ function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstre
   const onSave = withClear(onSaveUpstream);
   const onCancel = withClear(onCancelUpstream);
 
-  return <Modal show={show} onHide={onCancel} centered>
+  return <Modal show={show} onHide={onCancel} centered onEntered={() => firstInputRef.current.focus()}>
     <Modal.Header closeButton>
       <Modal.Title>New card</Modal.Title>
     </Modal.Header>
@@ -44,7 +38,7 @@ function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstre
           <Form.Label column sm={2}>Title:</Form.Label>
           <Col>
             <Form.Control ref={firstInputRef} value={title} onChange={(e) => setTitle(e.target.value)}
-                          placeholder={"Title"}/>
+                          placeholder={"Title"} onFocus={() => {console.log("focused")}}/>
           </Col>
         </Form.Group>
         <Form.Group as={Row}>
