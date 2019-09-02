@@ -38,7 +38,7 @@ function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstre
           <Form.Label column sm={2}>Title:</Form.Label>
           <Col>
             <Form.Control ref={firstInputRef} value={title} onChange={(e) => setTitle(e.target.value)}
-                          placeholder={"Title"} onFocus={() => {console.log("focused")}}/>
+                          placeholder={"Title"}/>
           </Col>
         </Form.Group>
         <Form.Group as={Row}>
