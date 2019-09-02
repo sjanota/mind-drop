@@ -26,23 +26,32 @@ function MyLabelsInput({labels, setLabels}) {
   </div>
 }
 
-function ChangeIdeaModal({show, onSave, onCancel, value}) {
+function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstream, value}) {
   const [title, setTitle] = React.useState(value.title || "");
   const [text, setText] = React.useState(value.text || "");
   const [labels, setLabels] = React.useState(value.labels || []);
-  const [firstInputRef, setFirstInputRef] = React.useState(null);
+  const firstInputRef = React.useRef(null);
 
-  React.useEffect(() => {
+  const resetValue = () => {
     setTitle(value.title || "");
     setText(value.text || "");
     setLabels(value.labels || []);
-  }, [value]);
+  };
+
+  React.useEffect(resetValue, [value]);
 
   React.useEffect(() => {
-    if (firstInputRef) {
-      firstInputRef.focus()
+    if (firstInputRef.current) {
+      firstInputRef.current.focus()
     }
   }, [firstInputRef]);
+
+  const withClear = (cb) => (arg) => {
+    resetValue();
+    cb(arg)
+  };
+  const onSave = withClear(onSaveUpstream);
+  const onCancel = withClear(onCancelUpstream);
 
   return <Modal show={show} onHide={onCancel} centered>
     <Modal.Header closeButton>
@@ -53,7 +62,7 @@ function ChangeIdeaModal({show, onSave, onCancel, value}) {
         <Form.Group as={Row}>
           <Form.Label column sm={2}>Title:</Form.Label>
           <Col>
-            <Form.Control ref={setFirstInputRef} value={title} onChange={(e) => setTitle(e.target.value)}
+            <Form.Control ref={firstInputRef} value={title} onChange={(e) => setTitle(e.target.value)}
                           placeholder={"Title"}/>
           </Col>
         </Form.Group>
@@ -61,14 +70,6 @@ function ChangeIdeaModal({show, onSave, onCancel, value}) {
           <Form.Label column sm={2}>Label:</Form.Label>
           <Col>
             <MyLabelsInput labels={labels} setLabels={setLabels}/>
-            {/*<TagsInput*/}
-            {/*  value={labels}*/}
-            {/*  onChange={labels => setLabels(labels)}*/}
-            {/*  renderInput={({addTag, ...props}) => <Form.Control type='text' {...props}/>}*/}
-            {/*  renderTag={({tag, key, disabled, onRemove, classNameRemove, getTagDisplayValue, ...other}) =>*/}
-            {/*    <Badge key={key} variant={"primary"} {...other}>{getTagDisplayValue(tag)}</Badge>*/}
-            {/*  }*/}
-            {/*/>*/}
           </Col>
         </Form.Group>
         <Form.Label>Text:</Form.Label>
