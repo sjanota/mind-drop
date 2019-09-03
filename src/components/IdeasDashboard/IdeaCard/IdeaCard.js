@@ -13,13 +13,13 @@ export default function IdeaCard({card, onDelete, onEdit}) {
     <Card.Body>
       <Card.Title>{card.title}</Card.Title>
       <Card.Subtitle>{card.labels.map(label => <Badge variant={"primary"} key={label}>{label}</Badge>)}</Card.Subtitle>
-      <Card.Text><ReactMarkdown source={card.text}/></Card.Text>
+      <Card.Text as={"div"}><ReactMarkdown source={card.text}/></Card.Text>
     </Card.Body>
     <Card.Footer className={"text-right"}>
-      <Button variant={"secondary"} size="sm" onClick={onEdit}>
+      <Button className={"edit"} variant={"secondary"} size="sm" onClick={onEdit}>
         <Octicon icon={Pencil} size='small'/>
       </Button>
-      <Button variant={"danger"} size="sm" onClick={onDelete}>
+      <Button className={"delete"} variant={"danger"} size="sm" onClick={onDelete}>
         <Octicon icon={Trashcan} size='small'/>
       </Button>
     </Card.Footer>

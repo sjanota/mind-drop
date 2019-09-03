@@ -27,19 +27,19 @@ exports[`matches snapshot 1`] = `
         label2
       </span>
     </div>
-    <p
+    <div
       className="card-text"
     >
       <p>
         Text
       </p>
-    </p>
+    </div>
   </div>
   <div
     className="text-right card-footer"
   >
     <button
-      className="btn btn-secondary btn-sm"
+      className="edit btn btn-secondary btn-sm"
       disabled={false}
       onClick={[MockFunction]}
       type="button"
@@ -67,7 +67,7 @@ exports[`matches snapshot 1`] = `
       </svg>
     </button>
     <button
-      className="btn btn-danger btn-sm"
+      className="delete btn btn-danger btn-sm"
       disabled={false}
       onClick={[MockFunction]}
       type="button"
