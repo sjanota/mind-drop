@@ -1,16 +1,9 @@
 import React from 'react';
 import './LabelsInput.css';
-import Badge from "react-bootstrap/Badge";
-import Octicon, {X} from "@primer/octicons-react";
+import PropTypes from 'prop-types';
+import RemovableLabel from "../RemovableLabel/RemovableLabel";
 
-function RemovableLabel({label, onDelete}) {
-  return <Badge className={"RemovableLabel"} variant={"primary"}>
-    <span>{label}</span>
-    <button onClick={onDelete}><Octicon width={8} icon={X}/></button>
-  </Badge>
-}
-
-function LabelsInput({labels, setLabels}) {
+export default function LabelsInput({labels, setLabels}) {
   const [inputValue, setInputValue] = React.useState("");
 
   const onChange = (evt) => {
@@ -33,4 +26,7 @@ function LabelsInput({labels, setLabels}) {
   </div>
 }
 
-export default LabelsInput;
+LabelsInput.propTypes = {
+  labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setLabels: PropTypes.func.isRequired
+};
