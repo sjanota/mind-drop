@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import removeFromList from "../../util/immutable/removeFromList";
 import addToList from "../../util/immutable/addToList";
 import replaceOnList from "../../util/immutable/replaceOnList";
+import CardColumns from "react-bootstrap/CardColumns";
 
 const emptyCard = {
   title: "",
@@ -87,6 +88,7 @@ export default function IdeasDashboard({labelFilter}) {
   }, [state.cards]);
 
   return <div className={"IdeasDashboard"}>
+    <CardColumns>
     {state.filteredCards.map((card, idx) => <CardCard
       key={idx}
       card={card}
@@ -96,6 +98,7 @@ export default function IdeasDashboard({labelFilter}) {
     <AddCardCard
       onClick={() => dispatch(addItem())}
     />
+    </CardColumns>s
     <ChangeCardModal
       show={state.showModal}
       onCancel={() => dispatch(changeCanceled())}
