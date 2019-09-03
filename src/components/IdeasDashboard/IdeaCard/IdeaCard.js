@@ -4,13 +4,14 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Octicon, {Trashcan, Pencil} from "@primer/octicons-react";
 import Badge from "react-bootstrap/Badge";
+import ReactMarkdown from "react-markdown";
 
 function IdeaCard({card, onDelete, onEdit}) {
-  return <Card style={{}}>
+  return <Card style={{}} className={"IdeaCard"}>
     <Card.Body>
       <Card.Title>{card.title}</Card.Title>
       <Card.Subtitle>{card.labels.map(label => <Badge variant={"primary"} key={label}>{label}</Badge>)}</Card.Subtitle>
-      <Card.Text>{card.text}</Card.Text>
+      <Card.Text><ReactMarkdown source={card.text}/></Card.Text>
     </Card.Body>
     <Card.Footer className={"text-right"}>
       <Button variant={"secondary"} size="sm" onClick={onEdit}>
