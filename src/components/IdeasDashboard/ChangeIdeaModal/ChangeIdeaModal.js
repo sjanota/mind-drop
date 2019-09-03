@@ -7,8 +7,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LabelsInput from "../../common/LabelsInput/LabelsInput";
 import PropTypes from 'prop-types';
-import removeFromList from "../../../util/removeFromList";
-import addToList from "../../../util/addToList";
+import removeFromList from "../../../util/immutable/removeFromList";
+import addToList from "../../../util/immutable/addToList";
 
 const TITLE_SET = 'TITLE_SET';
 const titleSet = (title) => ({type: TITLE_SET, title});

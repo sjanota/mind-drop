@@ -4,9 +4,9 @@ import ChangeCardModal from "./ChangeIdeaModal/ChangeIdeaModal";
 import AddCardCard from "./AddIdeaCard/AddIdeaCard";
 import CardCard from "./IdeaCard/IdeaCard";
 import PropTypes from 'prop-types';
-import removeFromList from "../../util/removeFromList";
-import addToList from "../../util/addToList";
-import replaceOnList from "../../util/replaceOnList";
+import removeFromList from "../../util/immutable/removeFromList";
+import addToList from "../../util/immutable/addToList";
+import replaceOnList from "../../util/immutable/replaceOnList";
 
 const emptyCard = {
   title: "",
