@@ -1,0 +1,18 @@
+.RemovableLabel {
+    display: inline-flex;
+    align-items: center;
+}
+
+.RemovableLabel > span {
+    margin-right: 5px;
+}
+
+.RemovableLabel button {
+    border: none;
+    background:transparent;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    display: inline-flex;
+    align-items: center;
+}
