@@ -6,8 +6,9 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LabelsInput from "../../common/LabelsInput/LabelsInput";
+import PropTypes from 'prop-types';
 
-function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstream, value}) {
+export default function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstream, value}) {
   const [title, setTitle] = React.useState(value.title || "");
   const [text, setText] = React.useState(value.text || "");
   const [labels, setLabels] = React.useState(value.labels || []);
@@ -66,4 +67,13 @@ function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel: onCancelUpstre
   </Modal>
 }
 
-export default ChangeIdeaModal;
+ChangeIdeaModal.propTypes = {
+  show: PropTypes.bool.isRequired,
+  onSave: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  value: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    labels: PropTypes.arrayOf(PropTypes.string).isRequired
+  })
+};

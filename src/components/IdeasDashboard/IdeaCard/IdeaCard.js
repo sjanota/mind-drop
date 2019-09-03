@@ -2,11 +2,13 @@ import React from 'react';
 import './IdeaCard.css';
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import Octicon, {Trashcan, Pencil} from "@primer/octicons-react";
+import Octicon, {Pencil, Trashcan} from "@primer/octicons-react";
 import Badge from "react-bootstrap/Badge";
 import ReactMarkdown from "react-markdown";
+import PropTypes from "prop-types";
 
-function IdeaCard({card, onDelete, onEdit}) {
+
+export default function IdeaCard({card, onDelete, onEdit}) {
   return <Card style={{}} className={"IdeaCard"}>
     <Card.Body>
       <Card.Title>{card.title}</Card.Title>
@@ -24,4 +26,12 @@ function IdeaCard({card, onDelete, onEdit}) {
   </Card>
 }
 
-export default IdeaCard;
+IdeaCard.propTypes = {
+  card: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    labels: PropTypes.arrayOf(PropTypes.string).isRequired
+  }),
+  onDelete: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired
+};

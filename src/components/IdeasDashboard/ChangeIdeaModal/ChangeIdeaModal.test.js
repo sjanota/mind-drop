@@ -1,9 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ChangeIdeaModal from './ChangeIdeaModal';
+import {mount} from 'enzyme';
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<ChangeIdeaModal />, div);
-  ReactDOM.unmountComponentAtNode(div);
+  const value = {
+    title: "Title",
+    text: "Text",
+    labels: ["label1", "label2"]
+  };
+  mount(<ChangeIdeaModal show={true} value={value} onSave={jest.fn()} onCancel={jest.fn()}/>);
 });

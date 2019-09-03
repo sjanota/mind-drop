@@ -1,9 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import IdeasDashboard from './IdeasDashboard';
+import renderer from "react-test-renderer";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<IdeasDashboard />, div);
-  ReactDOM.unmountComponentAtNode(div);
+it('matches snapshot', () => {
+  const tree = renderer
+    .create(<IdeasDashboard labelFilter={"label1"}/>)
+    .toJSON();
+  expect(tree).toMatchSnapshot()
 });

@@ -3,6 +3,7 @@ import './IdeasDashboard.css';
 import ChangeCardModal from "./ChangeIdeaModal/ChangeIdeaModal";
 import AddCardCard from "./AddIdeaCard/AddIdeaCard";
 import CardCard from "./IdeaCard/IdeaCard";
+import PropTypes from 'prop-types';
 
 const emptyCard = {
   title: "",
@@ -73,10 +74,9 @@ const initialState = {
 };
 
 
-function IdeasDashboard({labelFilter}) {
+export default function IdeasDashboard({labelFilter}) {
   const cards = JSON
     .parse(localStorage.getItem('cards'))
-    .map(({label, ...card}) => !label ? card : {...card, labels: [label]})
     || [];
   const [state, dispatch] = React.useReducer(reducer, {...initialState, cards}, itemsChanged);
 
@@ -107,4 +107,6 @@ function IdeasDashboard({labelFilter}) {
   </div>
 }
 
-export default IdeasDashboard;
+IdeasDashboard.propTypes = {
+  labelFilter: PropTypes.string.isRequired
+};
