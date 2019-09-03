@@ -8,17 +8,19 @@ const labels = ['label1', 'label2', 'label3'];
 
 it('matches snapshot', () => {
   const tree = renderer
-    .create(<LabelsInput labels={labels} setLabels={jest.fn()}/>)
+    .create(<LabelsInput labels={labels} addLabel={jest.fn()} deleteLabel={jest.fn()}/>)
     .toJSON();
   expect(tree).toMatchSnapshot()
 });
 
 describe('shallow', () => {
-  const setLabels = jest.fn();
-  const component = shallow(<LabelsInput labels={labels} setLabels={setLabels}/>);
+  const addLabel = jest.fn();
+  const deleteLabel = jest.fn();
+  const component = shallow(<LabelsInput labels={labels} addLabel={addLabel} deleteLabel={deleteLabel}/>);
 
   beforeEach(() => {
-    setLabels.mockReset();
+    addLabel.mockReset();
+    deleteLabel.mockReset()
   });
 
   it('displays all the labels', () => {
@@ -29,40 +31,31 @@ describe('shallow', () => {
 
   it('deletes label on RemovableLabel onDelete', () => {
     const removedIdx = 1;
-    const expected = [labels[0], labels[2]];
     const onDelete = component
       .find(RemovableLabel)
       .filter({label: labels[removedIdx]})
       .prop('onDelete');
+
     onDelete();
 
-    expect(setLabels).toBeCalledTimes(1);
-    expect(setLabels.mock.calls[0]).toHaveLength(1);
-
-    const callback = setLabels.mock.calls[0][0];
-    expect(callback(labels)).toEqual(expected)
+    expect(deleteLabel).toBeCalledWith(labels[removedIdx]);
   });
 
   it('adds new label when input ends with space', () => {
     const newLabel = 'new-label';
-    const expected = [...labels, newLabel];
-    const input = component.find('input');
-    input.simulate('change', {target: {value: newLabel + " "}});
 
-    expect(setLabels).toBeCalledTimes(1);
-    expect(setLabels.mock.calls[0]).toHaveLength(1);
+    component.find('input').simulate('change', {target: {value: newLabel + " "}});
 
-    const callback = setLabels.mock.calls[0][0];
-    expect(callback(labels)).toEqual(expected);
-
-    expect(input).toHaveValue("");
+    expect(addLabel).toBeCalledWith(newLabel);
+    expect(component.find('input')).toHaveValue("");
   });
 
   it(`keeps input when input doesn't end with space`, () => {
     const newLabel = 'new-label';
+
     component.find('input').simulate('change', {target: {value: newLabel}});
 
-    expect(setLabels).toBeCalledTimes(0);
+    expect(addLabel).toBeCalledTimes(0);
     expect(component.find('input')).toHaveProp('value', newLabel);
   });
 });

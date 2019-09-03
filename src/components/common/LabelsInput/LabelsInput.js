@@ -3,21 +3,21 @@ import './LabelsInput.css';
 import PropTypes from 'prop-types';
 import RemovableLabel from "../RemovableLabel/RemovableLabel";
 
-export default function LabelsInput({labels, setLabels}) {
+export default function LabelsInput({labels, addLabel, deleteLabel}) {
   const [inputValue, setInputValue] = React.useState("");
 
   const onChange = (evt) => {
     const value = evt.target.value;
     if (value.endsWith(" ")) {
       setInputValue("");
-      setLabels(old => [...old, value.trim()]);
+      addLabel(value.trim());
     } else {
       setInputValue(value);
     }
   };
 
   const onDeleteLabel = (label) => () => {
-    setLabels(old => [...old.slice(0, old.indexOf(label)), ...old.slice(old.indexOf(label) + 1, old.length)])
+    deleteLabel(label)
   };
 
   return <div className={"form-control LabelsInput"}>
@@ -28,5 +28,6 @@ export default function LabelsInput({labels, setLabels}) {
 
 LabelsInput.propTypes = {
   labels: PropTypes.arrayOf(PropTypes.string).isRequired,
-  setLabels: PropTypes.func.isRequired
+  addLabel: PropTypes.func.isRequired,
+  deleteLabel: PropTypes.func.isRequired
 };

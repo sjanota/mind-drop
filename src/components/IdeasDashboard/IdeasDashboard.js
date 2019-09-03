@@ -4,6 +4,9 @@ import ChangeCardModal from "./ChangeIdeaModal/ChangeIdeaModal";
 import AddCardCard from "./AddIdeaCard/AddIdeaCard";
 import CardCard from "./IdeaCard/IdeaCard";
 import PropTypes from 'prop-types';
+import removeFromList from "../../util/removeFromList";
+import addToList from "../../util/addToList";
+import replaceOnList from "../../util/replaceOnList";
 
 const emptyCard = {
   title: "",
@@ -45,18 +48,13 @@ const reducer = (state, action) => {
     case EDIT_ITEM:
       return {...state, showModal: true, modalState: action.value, editItem: state.cards.indexOf(action.value)};
     case ITEM_DELETED:
-      const idx = state.cards.indexOf(action.value);
-      return itemsChanged({...state, cards: [...state.cards.slice(0, idx), ...state.cards.slice(idx + 1, state.cards.length)]});
+      return itemsChanged({...state, cards: removeFromList(state.cards, action.value)});
     case CHANGE_CANCELED:
       return {...state, showModal: false, editItem: null};
     case CHANGE_APPLIED: {
       const cards = state.editItem != null
-        ? [
-          ...state.cards.slice(0, state.editItem),
-          action.value,
-          ...state.cards.slice(state.editItem + 1, state.cards.length)
-        ]
-        : [...state.cards, action.value];
+        ? replaceOnList(state.cards, action.value)
+        : addToList(state.cards, action.value);
       return itemsChanged({...state, showModal: false, editItem: null, cards});
     }
     default:
