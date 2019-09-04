@@ -5,46 +5,51 @@ exports[`matches snapshot 1`] = `
   className="IdeasDashboard"
 >
   <div
-    className="AddIdeaCard card bg-secondary"
+    className="card-columns"
   >
     <div
-      className="card-body"
+      className="AddIdeaCard card bg-secondary"
     >
-      <button
-        className="btn btn-dark"
-        disabled={false}
-        onClick={[Function]}
-        style={
-          Object {
-            "height": "100%",
-            "width": "100%",
-          }
-        }
-        type="button"
+      <div
+        className="card-body"
       >
-        <svg
-          aria-hidden="true"
-          className="octicon"
-          height={32}
-          role="img"
+        <button
+          className="btn btn-dark"
+          disabled={false}
+          onClick={[Function]}
           style={
             Object {
-              "display": "inline-block",
-              "fill": "currentColor",
-              "userSelect": "none",
-              "verticalAlign": "text-bottom",
+              "height": "100%",
+              "width": "100%",
             }
           }
-          viewBox="0 0 12 16"
-          width={24}
+          type="button"
         >
-          <path
-            d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"
-            fillRule="evenodd"
-          />
-        </svg>
-      </button>
+          <svg
+            aria-hidden="true"
+            className="octicon"
+            height={32}
+            role="img"
+            style={
+              Object {
+                "display": "inline-block",
+                "fill": "currentColor",
+                "userSelect": "none",
+                "verticalAlign": "text-bottom",
+              }
+            }
+            viewBox="0 0 12 16"
+            width={24}
+          >
+            <path
+              d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
+  s
 </div>
 `;

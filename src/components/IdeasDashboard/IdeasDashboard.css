@@ -1,12 +1,6 @@
 .IdeasDashboard {
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
-    /*align-items: flex-start;*/
 }
 
 .IdeasDashboard .card-columns {
-    padding: 20px;
-    /*width: 20rem;*/
-    /*height: 15rem;*/
-    /*min-width: 15rem;*/
+    padding: 1.25rem;
 }
