@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {useReducer, useEffect} from 'react';
 import './IdeasDashboard.css';
 import ChangeCardModal from "./ChangeIdeaModal/ChangeIdeaModal";
 import AddCardCard from "./AddIdeaCard/AddIdeaCard";
-import CardCard from "./IdeaCard/IdeaCard";
+import IdeaCard from "./IdeaCard/IdeaCard";
 import PropTypes from 'prop-types';
 import removeFromList from "../../util/immutable/removeFromList";
 import addToList from "../../util/immutable/addToList";
@@ -36,7 +36,7 @@ const changeCanceled = () => ({type: CHANGE_CANCELED});
 const itemsChanged = (state) => {
   return {
     ...state,
-    filteredCards: state.labelFilter ? state.cards.filter(c => c.labels.indexOf(state.labelFilter) > -1) : state.cards
+    filteredCards: state.labelFilter ? state.cards.filter(c => c.labels.indexOf(state.labelFilter) !== -1) : state.cards
   }
 };
 
@@ -73,23 +73,22 @@ const initialState = {
 };
 
 
-export default function IdeasDashboard({labelFilter}) {
-  const cards = JSON
+export default function IdeasDashboard({labelFilter, initialCards}) {
+  const cards = initialCards || JSON
     .parse(localStorage.getItem('cards'))
     || [];
-  const [state, dispatch] = React.useReducer(reducer, {...initialState, cards}, itemsChanged);
-
-  React.useEffect(() => {
+  const [state, dispatch] = useReducer(reducer, {...initialState, cards}, itemsChanged);
+  useEffect(() => {
     dispatch(itemsFiltered(labelFilter))
   }, [labelFilter]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     localStorage.setItem('cards', JSON.stringify(state.cards));
   }, [state.cards]);
 
   return <div className={"IdeasDashboard"}>
     <CardColumns>
-    {state.filteredCards.map((card, idx) => <CardCard
+    {state.filteredCards.map((card, idx) => <IdeaCard
       key={idx}
       card={card}
       onDelete={() => dispatch(itemDeleted(card))}
@@ -98,7 +97,7 @@ export default function IdeasDashboard({labelFilter}) {
     <AddCardCard
       onClick={() => dispatch(addItem())}
     />
-    </CardColumns>s
+    </CardColumns>
     <ChangeCardModal
       show={state.showModal}
       onCancel={() => dispatch(changeCanceled())}
@@ -109,5 +108,10 @@ export default function IdeasDashboard({labelFilter}) {
 }
 
 IdeasDashboard.propTypes = {
-  labelFilter: PropTypes.string.isRequired
+  labelFilter: PropTypes.string.isRequired,
+  initialCards: PropTypes.array
+};
+
+IdeasDashboard.defaultProps = {
+  initialCards: []
 };

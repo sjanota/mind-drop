@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Navbar labelFilter={labelFilter} setLabelFilter={setLabelFilter}/>
-      <Cards labelFilter={labelFilter}/>
+      <Cards labelFilter={labelFilter} />
     </div>
   );
 }

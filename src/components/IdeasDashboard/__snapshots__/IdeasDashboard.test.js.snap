@@ -1,55 +1,1656 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`matches snapshot 1`] = `
-<div
-  className="IdeasDashboard"
+exports[`shows all cards on empty filter 1`] = `
+<IdeasDashboard
+  initialCards={
+    Array [
+      Object {
+        "labels": Array [
+          "label1",
+          "label2",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 1",
+      },
+      Object {
+        "labels": Array [
+          "label1",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 2",
+      },
+      Object {
+        "labels": Array [
+          "label2",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 3",
+      },
+    ]
+  }
+  labelFilter=""
 >
   <div
-    className="card-columns"
+    className="IdeasDashboard"
   >
-    <div
-      className="AddIdeaCard card bg-secondary"
-    >
+    <CardColumns>
       <div
-        className="card-body"
+        className="card-columns"
       >
-        <button
-          className="btn btn-dark"
-          disabled={false}
-          onClick={[Function]}
-          style={
+        <IdeaCard
+          card={
             Object {
-              "height": "100%",
-              "width": "100%",
+              "labels": Array [
+                "label1",
+                "label2",
+              ],
+              "text": "lorem ipsum",
+              "title": "My card 1",
             }
           }
-          type="button"
+          key="0"
+          onDelete={[Function]}
+          onEdit={[Function]}
         >
-          <svg
-            aria-hidden="true"
-            className="octicon"
-            height={32}
-            role="img"
-            style={
-              Object {
-                "display": "inline-block",
-                "fill": "currentColor",
-                "userSelect": "none",
-                "verticalAlign": "text-bottom",
+          <Card
+            body={false}
+            className="IdeaCard"
+            style={Object {}}
+          >
+            <div
+              className="IdeaCard card"
+              style={Object {}}
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <CardTitle>
+                    <ForwardRef
+                      className="card-title"
+                    >
+                      <div
+                        className="card-title h5"
+                      >
+                        My card 1
+                      </div>
+                    </ForwardRef>
+                  </CardTitle>
+                  <CardSubtitle>
+                    <ForwardRef
+                      className="card-subtitle"
+                    >
+                      <div
+                        className="card-subtitle h6"
+                      >
+                        <Badge
+                          key="label1"
+                          pill={false}
+                          variant="primary"
+                        >
+                          <span
+                            className="badge badge-primary"
+                          >
+                            label1
+                          </span>
+                        </Badge>
+                        <Badge
+                          key="label2"
+                          pill={false}
+                          variant="primary"
+                        >
+                          <span
+                            className="badge badge-primary"
+                          >
+                            label2
+                          </span>
+                        </Badge>
+                      </div>
+                    </ForwardRef>
+                  </CardSubtitle>
+                  <CardText
+                    as="div"
+                  >
+                    <div
+                      className="card-text"
+                    >
+                      <ReactMarkdown
+                        astPlugins={Array []}
+                        escapeHtml={true}
+                        parserOptions={Object {}}
+                        plugins={Array []}
+                        rawSourcePos={false}
+                        renderers={Object {}}
+                        skipHtml={false}
+                        source="lorem ipsum"
+                        sourcePos={false}
+                        transformLinkUri={[Function]}
+                      >
+                        <Root
+                          key="root-1-1-0"
+                        >
+                          <p
+                            key="paragraph-1-1-0"
+                          >
+                            <TextRenderer
+                              key="text-1-1-0"
+                              nodeKey="text-1-1-0"
+                              value="lorem ipsum"
+                            >
+                              lorem ipsum
+                            </TextRenderer>
+                          </p>
+                        </Root>
+                      </ReactMarkdown>
+                    </div>
+                  </CardText>
+                </div>
+              </CardBody>
+              <CardFooter
+                className="text-right"
+              >
+                <div
+                  className="text-right card-footer"
+                >
+                  <Button
+                    active={false}
+                    className="edit"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="secondary"
+                  >
+                    <button
+                      className="edit btn btn-secondary btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 14 16"
+                          width={14}
+                        >
+                          <Pencil>
+                            <path
+                              d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"
+                              fillRule="evenodd"
+                            />
+                          </Pencil>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                  <Button
+                    active={false}
+                    className="delete"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="danger"
+                  >
+                    <button
+                      className="delete btn btn-danger btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 12 16"
+                          width={12}
+                        >
+                          <Trashcan>
+                            <path
+                              d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"
+                              fillRule="evenodd"
+                            />
+                          </Trashcan>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                </div>
+              </CardFooter>
+            </div>
+          </Card>
+        </IdeaCard>
+        <IdeaCard
+          card={
+            Object {
+              "labels": Array [
+                "label1",
+              ],
+              "text": "lorem ipsum",
+              "title": "My card 2",
+            }
+          }
+          key="1"
+          onDelete={[Function]}
+          onEdit={[Function]}
+        >
+          <Card
+            body={false}
+            className="IdeaCard"
+            style={Object {}}
+          >
+            <div
+              className="IdeaCard card"
+              style={Object {}}
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <CardTitle>
+                    <ForwardRef
+                      className="card-title"
+                    >
+                      <div
+                        className="card-title h5"
+                      >
+                        My card 2
+                      </div>
+                    </ForwardRef>
+                  </CardTitle>
+                  <CardSubtitle>
+                    <ForwardRef
+                      className="card-subtitle"
+                    >
+                      <div
+                        className="card-subtitle h6"
+                      >
+                        <Badge
+                          key="label1"
+                          pill={false}
+                          variant="primary"
+                        >
+                          <span
+                            className="badge badge-primary"
+                          >
+                            label1
+                          </span>
+                        </Badge>
+                      </div>
+                    </ForwardRef>
+                  </CardSubtitle>
+                  <CardText
+                    as="div"
+                  >
+                    <div
+                      className="card-text"
+                    >
+                      <ReactMarkdown
+                        astPlugins={Array []}
+                        escapeHtml={true}
+                        parserOptions={Object {}}
+                        plugins={Array []}
+                        rawSourcePos={false}
+                        renderers={Object {}}
+                        skipHtml={false}
+                        source="lorem ipsum"
+                        sourcePos={false}
+                        transformLinkUri={[Function]}
+                      >
+                        <Root
+                          key="root-1-1-0"
+                        >
+                          <p
+                            key="paragraph-1-1-0"
+                          >
+                            <TextRenderer
+                              key="text-1-1-0"
+                              nodeKey="text-1-1-0"
+                              value="lorem ipsum"
+                            >
+                              lorem ipsum
+                            </TextRenderer>
+                          </p>
+                        </Root>
+                      </ReactMarkdown>
+                    </div>
+                  </CardText>
+                </div>
+              </CardBody>
+              <CardFooter
+                className="text-right"
+              >
+                <div
+                  className="text-right card-footer"
+                >
+                  <Button
+                    active={false}
+                    className="edit"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="secondary"
+                  >
+                    <button
+                      className="edit btn btn-secondary btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 14 16"
+                          width={14}
+                        >
+                          <Pencil>
+                            <path
+                              d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"
+                              fillRule="evenodd"
+                            />
+                          </Pencil>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                  <Button
+                    active={false}
+                    className="delete"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="danger"
+                  >
+                    <button
+                      className="delete btn btn-danger btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 12 16"
+                          width={12}
+                        >
+                          <Trashcan>
+                            <path
+                              d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"
+                              fillRule="evenodd"
+                            />
+                          </Trashcan>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                </div>
+              </CardFooter>
+            </div>
+          </Card>
+        </IdeaCard>
+        <IdeaCard
+          card={
+            Object {
+              "labels": Array [
+                "label2",
+              ],
+              "text": "lorem ipsum",
+              "title": "My card 3",
+            }
+          }
+          key="2"
+          onDelete={[Function]}
+          onEdit={[Function]}
+        >
+          <Card
+            body={false}
+            className="IdeaCard"
+            style={Object {}}
+          >
+            <div
+              className="IdeaCard card"
+              style={Object {}}
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <CardTitle>
+                    <ForwardRef
+                      className="card-title"
+                    >
+                      <div
+                        className="card-title h5"
+                      >
+                        My card 3
+                      </div>
+                    </ForwardRef>
+                  </CardTitle>
+                  <CardSubtitle>
+                    <ForwardRef
+                      className="card-subtitle"
+                    >
+                      <div
+                        className="card-subtitle h6"
+                      >
+                        <Badge
+                          key="label2"
+                          pill={false}
+                          variant="primary"
+                        >
+                          <span
+                            className="badge badge-primary"
+                          >
+                            label2
+                          </span>
+                        </Badge>
+                      </div>
+                    </ForwardRef>
+                  </CardSubtitle>
+                  <CardText
+                    as="div"
+                  >
+                    <div
+                      className="card-text"
+                    >
+                      <ReactMarkdown
+                        astPlugins={Array []}
+                        escapeHtml={true}
+                        parserOptions={Object {}}
+                        plugins={Array []}
+                        rawSourcePos={false}
+                        renderers={Object {}}
+                        skipHtml={false}
+                        source="lorem ipsum"
+                        sourcePos={false}
+                        transformLinkUri={[Function]}
+                      >
+                        <Root
+                          key="root-1-1-0"
+                        >
+                          <p
+                            key="paragraph-1-1-0"
+                          >
+                            <TextRenderer
+                              key="text-1-1-0"
+                              nodeKey="text-1-1-0"
+                              value="lorem ipsum"
+                            >
+                              lorem ipsum
+                            </TextRenderer>
+                          </p>
+                        </Root>
+                      </ReactMarkdown>
+                    </div>
+                  </CardText>
+                </div>
+              </CardBody>
+              <CardFooter
+                className="text-right"
+              >
+                <div
+                  className="text-right card-footer"
+                >
+                  <Button
+                    active={false}
+                    className="edit"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="secondary"
+                  >
+                    <button
+                      className="edit btn btn-secondary btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 14 16"
+                          width={14}
+                        >
+                          <Pencil>
+                            <path
+                              d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"
+                              fillRule="evenodd"
+                            />
+                          </Pencil>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                  <Button
+                    active={false}
+                    className="delete"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="danger"
+                  >
+                    <button
+                      className="delete btn btn-danger btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 12 16"
+                          width={12}
+                        >
+                          <Trashcan>
+                            <path
+                              d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"
+                              fillRule="evenodd"
+                            />
+                          </Trashcan>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                </div>
+              </CardFooter>
+            </div>
+          </Card>
+        </IdeaCard>
+        <AddIdeaCard
+          onClick={[Function]}
+        >
+          <Card
+            bg="secondary"
+            body={false}
+            className="AddIdeaCard"
+          >
+            <div
+              className="AddIdeaCard card bg-secondary"
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <Button
+                    active={false}
+                    disabled={false}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "height": "100%",
+                        "width": "100%",
+                      }
+                    }
+                    type="button"
+                    variant="dark"
+                  >
+                    <button
+                      className="btn btn-dark"
+                      disabled={false}
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "height": "100%",
+                          "width": "100%",
+                        }
+                      }
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="medium"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={32}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 12 16"
+                          width={24}
+                        >
+                          <Plus>
+                            <path
+                              d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"
+                              fillRule="evenodd"
+                            />
+                          </Plus>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                </div>
+              </CardBody>
+            </div>
+          </Card>
+        </AddIdeaCard>
+      </div>
+    </CardColumns>
+    <ChangeIdeaModal
+      onCancel={[Function]}
+      onSave={[Function]}
+      show={false}
+      value={
+        Object {
+          "labels": Array [],
+          "text": "",
+          "title": "",
+        }
+      }
+    >
+      <Bootstrap(Modal)
+        centered={true}
+        onEntered={[Function]}
+        onHide={[Function]}
+        show={false}
+      >
+        <Modal
+          animation={true}
+          autoFocus={true}
+          backdrop={true}
+          bsPrefix="modal"
+          centered={true}
+          dialogAs={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "ModalDialog",
+              "render": [Function],
+            }
+          }
+          enforceFocus={true}
+          keyboard={true}
+          manager={
+            BootstrapModalManager {
+              "adjustAndStore": [Function],
+              "containers": Array [],
+              "data": Array [],
+              "handleContainerOverflow": true,
+              "hideSiblingNodes": true,
+              "modals": Array [],
+              "restore": [Function],
+              "scrollbarSize": 0,
+            }
+          }
+          onEntered={[Function]}
+          onHide={[Function]}
+          restoreFocus={true}
+          show={false}
+        >
+          <Modal
+            autoFocus={true}
+            backdrop={true}
+            backdropTransition={[Function]}
+            className="modal"
+            containerClassName="modal-open"
+            enforceFocus={true}
+            keyboard={true}
+            manager={
+              BootstrapModalManager {
+                "adjustAndStore": [Function],
+                "containers": Array [],
+                "data": Array [],
+                "handleContainerOverflow": true,
+                "hideSiblingNodes": true,
+                "modals": Array [],
+                "restore": [Function],
+                "scrollbarSize": 0,
               }
             }
-            viewBox="0 0 12 16"
-            width={24}
-          >
-            <path
-              d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"
-              fillRule="evenodd"
-            />
-          </svg>
-        </button>
-      </div>
-    </div>
+            onClick={[Function]}
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExited={[Function]}
+            onHide={[Function]}
+            onMouseUp={[Function]}
+            renderBackdrop={[Function]}
+            restoreFocus={true}
+            role="dialog"
+            show={false}
+            style={Object {}}
+            transition={[Function]}
+          />
+        </Modal>
+      </Bootstrap(Modal)>
+    </ChangeIdeaModal>
   </div>
-  s
-</div>
+</IdeasDashboard>
+`;
+
+exports[`shows filtered cards if filter is applied 1`] = `
+<IdeasDashboard
+  initialCards={
+    Array [
+      Object {
+        "labels": Array [
+          "label1",
+          "label2",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 1",
+      },
+      Object {
+        "labels": Array [
+          "label1",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 2",
+      },
+      Object {
+        "labels": Array [
+          "label2",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 3",
+      },
+    ]
+  }
+  labelFilter="label2"
+>
+  <div
+    className="IdeasDashboard"
+  >
+    <CardColumns>
+      <div
+        className="card-columns"
+      >
+        <IdeaCard
+          card={
+            Object {
+              "labels": Array [
+                "label1",
+                "label2",
+              ],
+              "text": "lorem ipsum",
+              "title": "My card 1",
+            }
+          }
+          key="0"
+          onDelete={[Function]}
+          onEdit={[Function]}
+        >
+          <Card
+            body={false}
+            className="IdeaCard"
+            style={Object {}}
+          >
+            <div
+              className="IdeaCard card"
+              style={Object {}}
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <CardTitle>
+                    <ForwardRef
+                      className="card-title"
+                    >
+                      <div
+                        className="card-title h5"
+                      >
+                        My card 1
+                      </div>
+                    </ForwardRef>
+                  </CardTitle>
+                  <CardSubtitle>
+                    <ForwardRef
+                      className="card-subtitle"
+                    >
+                      <div
+                        className="card-subtitle h6"
+                      >
+                        <Badge
+                          key="label1"
+                          pill={false}
+                          variant="primary"
+                        >
+                          <span
+                            className="badge badge-primary"
+                          >
+                            label1
+                          </span>
+                        </Badge>
+                        <Badge
+                          key="label2"
+                          pill={false}
+                          variant="primary"
+                        >
+                          <span
+                            className="badge badge-primary"
+                          >
+                            label2
+                          </span>
+                        </Badge>
+                      </div>
+                    </ForwardRef>
+                  </CardSubtitle>
+                  <CardText
+                    as="div"
+                  >
+                    <div
+                      className="card-text"
+                    >
+                      <ReactMarkdown
+                        astPlugins={Array []}
+                        escapeHtml={true}
+                        parserOptions={Object {}}
+                        plugins={Array []}
+                        rawSourcePos={false}
+                        renderers={Object {}}
+                        skipHtml={false}
+                        source="lorem ipsum"
+                        sourcePos={false}
+                        transformLinkUri={[Function]}
+                      >
+                        <Root
+                          key="root-1-1-0"
+                        >
+                          <p
+                            key="paragraph-1-1-0"
+                          >
+                            <TextRenderer
+                              key="text-1-1-0"
+                              nodeKey="text-1-1-0"
+                              value="lorem ipsum"
+                            >
+                              lorem ipsum
+                            </TextRenderer>
+                          </p>
+                        </Root>
+                      </ReactMarkdown>
+                    </div>
+                  </CardText>
+                </div>
+              </CardBody>
+              <CardFooter
+                className="text-right"
+              >
+                <div
+                  className="text-right card-footer"
+                >
+                  <Button
+                    active={false}
+                    className="edit"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="secondary"
+                  >
+                    <button
+                      className="edit btn btn-secondary btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 14 16"
+                          width={14}
+                        >
+                          <Pencil>
+                            <path
+                              d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"
+                              fillRule="evenodd"
+                            />
+                          </Pencil>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                  <Button
+                    active={false}
+                    className="delete"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="danger"
+                  >
+                    <button
+                      className="delete btn btn-danger btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 12 16"
+                          width={12}
+                        >
+                          <Trashcan>
+                            <path
+                              d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"
+                              fillRule="evenodd"
+                            />
+                          </Trashcan>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                </div>
+              </CardFooter>
+            </div>
+          </Card>
+        </IdeaCard>
+        <IdeaCard
+          card={
+            Object {
+              "labels": Array [
+                "label2",
+              ],
+              "text": "lorem ipsum",
+              "title": "My card 3",
+            }
+          }
+          key="1"
+          onDelete={[Function]}
+          onEdit={[Function]}
+        >
+          <Card
+            body={false}
+            className="IdeaCard"
+            style={Object {}}
+          >
+            <div
+              className="IdeaCard card"
+              style={Object {}}
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <CardTitle>
+                    <ForwardRef
+                      className="card-title"
+                    >
+                      <div
+                        className="card-title h5"
+                      >
+                        My card 3
+                      </div>
+                    </ForwardRef>
+                  </CardTitle>
+                  <CardSubtitle>
+                    <ForwardRef
+                      className="card-subtitle"
+                    >
+                      <div
+                        className="card-subtitle h6"
+                      >
+                        <Badge
+                          key="label2"
+                          pill={false}
+                          variant="primary"
+                        >
+                          <span
+                            className="badge badge-primary"
+                          >
+                            label2
+                          </span>
+                        </Badge>
+                      </div>
+                    </ForwardRef>
+                  </CardSubtitle>
+                  <CardText
+                    as="div"
+                  >
+                    <div
+                      className="card-text"
+                    >
+                      <ReactMarkdown
+                        astPlugins={Array []}
+                        escapeHtml={true}
+                        parserOptions={Object {}}
+                        plugins={Array []}
+                        rawSourcePos={false}
+                        renderers={Object {}}
+                        skipHtml={false}
+                        source="lorem ipsum"
+                        sourcePos={false}
+                        transformLinkUri={[Function]}
+                      >
+                        <Root
+                          key="root-1-1-0"
+                        >
+                          <p
+                            key="paragraph-1-1-0"
+                          >
+                            <TextRenderer
+                              key="text-1-1-0"
+                              nodeKey="text-1-1-0"
+                              value="lorem ipsum"
+                            >
+                              lorem ipsum
+                            </TextRenderer>
+                          </p>
+                        </Root>
+                      </ReactMarkdown>
+                    </div>
+                  </CardText>
+                </div>
+              </CardBody>
+              <CardFooter
+                className="text-right"
+              >
+                <div
+                  className="text-right card-footer"
+                >
+                  <Button
+                    active={false}
+                    className="edit"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="secondary"
+                  >
+                    <button
+                      className="edit btn btn-secondary btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 14 16"
+                          width={14}
+                        >
+                          <Pencil>
+                            <path
+                              d="M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 0 1 1.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z"
+                              fillRule="evenodd"
+                            />
+                          </Pencil>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                  <Button
+                    active={false}
+                    className="delete"
+                    disabled={false}
+                    onClick={[Function]}
+                    size="sm"
+                    type="button"
+                    variant="danger"
+                  >
+                    <button
+                      className="delete btn btn-danger btn-sm"
+                      disabled={false}
+                      onClick={[Function]}
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="small"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={16}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 12 16"
+                          width={12}
+                        >
+                          <Trashcan>
+                            <path
+                              d="M11 2H9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1H2c-.55 0-1 .45-1 1v1c0 .55.45 1 1 1v9c0 .55.45 1 1 1h7c.55 0 1-.45 1-1V5c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm-1 12H3V5h1v8h1V5h1v8h1V5h1v8h1V5h1v9zm1-10H2V3h9v1z"
+                              fillRule="evenodd"
+                            />
+                          </Trashcan>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                </div>
+              </CardFooter>
+            </div>
+          </Card>
+        </IdeaCard>
+        <AddIdeaCard
+          onClick={[Function]}
+        >
+          <Card
+            bg="secondary"
+            body={false}
+            className="AddIdeaCard"
+          >
+            <div
+              className="AddIdeaCard card bg-secondary"
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <Button
+                    active={false}
+                    disabled={false}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "height": "100%",
+                        "width": "100%",
+                      }
+                    }
+                    type="button"
+                    variant="dark"
+                  >
+                    <button
+                      className="btn btn-dark"
+                      disabled={false}
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "height": "100%",
+                          "width": "100%",
+                        }
+                      }
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="medium"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={32}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 12 16"
+                          width={24}
+                        >
+                          <Plus>
+                            <path
+                              d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"
+                              fillRule="evenodd"
+                            />
+                          </Plus>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                </div>
+              </CardBody>
+            </div>
+          </Card>
+        </AddIdeaCard>
+      </div>
+    </CardColumns>
+    <ChangeIdeaModal
+      onCancel={[Function]}
+      onSave={[Function]}
+      show={false}
+      value={
+        Object {
+          "labels": Array [],
+          "text": "",
+          "title": "",
+        }
+      }
+    >
+      <Bootstrap(Modal)
+        centered={true}
+        onEntered={[Function]}
+        onHide={[Function]}
+        show={false}
+      >
+        <Modal
+          animation={true}
+          autoFocus={true}
+          backdrop={true}
+          bsPrefix="modal"
+          centered={true}
+          dialogAs={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "ModalDialog",
+              "render": [Function],
+            }
+          }
+          enforceFocus={true}
+          keyboard={true}
+          manager={
+            BootstrapModalManager {
+              "adjustAndStore": [Function],
+              "containers": Array [],
+              "data": Array [],
+              "handleContainerOverflow": true,
+              "hideSiblingNodes": true,
+              "modals": Array [],
+              "restore": [Function],
+              "scrollbarSize": 0,
+            }
+          }
+          onEntered={[Function]}
+          onHide={[Function]}
+          restoreFocus={true}
+          show={false}
+        >
+          <Modal
+            autoFocus={true}
+            backdrop={true}
+            backdropTransition={[Function]}
+            className="modal"
+            containerClassName="modal-open"
+            enforceFocus={true}
+            keyboard={true}
+            manager={
+              BootstrapModalManager {
+                "adjustAndStore": [Function],
+                "containers": Array [],
+                "data": Array [],
+                "handleContainerOverflow": true,
+                "hideSiblingNodes": true,
+                "modals": Array [],
+                "restore": [Function],
+                "scrollbarSize": 0,
+              }
+            }
+            onClick={[Function]}
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExited={[Function]}
+            onHide={[Function]}
+            onMouseUp={[Function]}
+            renderBackdrop={[Function]}
+            restoreFocus={true}
+            role="dialog"
+            show={false}
+            style={Object {}}
+            transition={[Function]}
+          />
+        </Modal>
+      </Bootstrap(Modal)>
+    </ChangeIdeaModal>
+  </div>
+</IdeasDashboard>
+`;
+
+exports[`shows no cards on non matching filter 1`] = `
+<IdeasDashboard
+  initialCards={
+    Array [
+      Object {
+        "labels": Array [
+          "label1",
+          "label2",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 1",
+      },
+      Object {
+        "labels": Array [
+          "label1",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 2",
+      },
+      Object {
+        "labels": Array [
+          "label2",
+        ],
+        "text": "lorem ipsum",
+        "title": "My card 3",
+      },
+    ]
+  }
+  labelFilter="label3"
+>
+  <div
+    className="IdeasDashboard"
+  >
+    <CardColumns>
+      <div
+        className="card-columns"
+      >
+        <AddIdeaCard
+          onClick={[Function]}
+        >
+          <Card
+            bg="secondary"
+            body={false}
+            className="AddIdeaCard"
+          >
+            <div
+              className="AddIdeaCard card bg-secondary"
+            >
+              <CardBody>
+                <div
+                  className="card-body"
+                >
+                  <Button
+                    active={false}
+                    disabled={false}
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "height": "100%",
+                        "width": "100%",
+                      }
+                    }
+                    type="button"
+                    variant="dark"
+                  >
+                    <button
+                      className="btn btn-dark"
+                      disabled={false}
+                      onClick={[Function]}
+                      style={
+                        Object {
+                          "height": "100%",
+                          "width": "100%",
+                        }
+                      }
+                      type="button"
+                    >
+                      <Octicon
+                        className="octicon"
+                        icon={[Function]}
+                        size="medium"
+                        verticalAlign="text-bottom"
+                      >
+                        <svg
+                          aria-hidden="true"
+                          className="octicon"
+                          height={32}
+                          role="img"
+                          style={
+                            Object {
+                              "display": "inline-block",
+                              "fill": "currentColor",
+                              "userSelect": "none",
+                              "verticalAlign": "text-bottom",
+                            }
+                          }
+                          viewBox="0 0 12 16"
+                          width={24}
+                        >
+                          <Plus>
+                            <path
+                              d="M12 9H7v5H5V9H0V7h5V2h2v5h5v2z"
+                              fillRule="evenodd"
+                            />
+                          </Plus>
+                        </svg>
+                      </Octicon>
+                    </button>
+                  </Button>
+                </div>
+              </CardBody>
+            </div>
+          </Card>
+        </AddIdeaCard>
+      </div>
+    </CardColumns>
+    <ChangeIdeaModal
+      onCancel={[Function]}
+      onSave={[Function]}
+      show={false}
+      value={
+        Object {
+          "labels": Array [],
+          "text": "",
+          "title": "",
+        }
+      }
+    >
+      <Bootstrap(Modal)
+        centered={true}
+        onEntered={[Function]}
+        onHide={[Function]}
+        show={false}
+      >
+        <Modal
+          animation={true}
+          autoFocus={true}
+          backdrop={true}
+          bsPrefix="modal"
+          centered={true}
+          dialogAs={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "displayName": "ModalDialog",
+              "render": [Function],
+            }
+          }
+          enforceFocus={true}
+          keyboard={true}
+          manager={
+            BootstrapModalManager {
+              "adjustAndStore": [Function],
+              "containers": Array [],
+              "data": Array [],
+              "handleContainerOverflow": true,
+              "hideSiblingNodes": true,
+              "modals": Array [],
+              "restore": [Function],
+              "scrollbarSize": 0,
+            }
+          }
+          onEntered={[Function]}
+          onHide={[Function]}
+          restoreFocus={true}
+          show={false}
+        >
+          <Modal
+            autoFocus={true}
+            backdrop={true}
+            backdropTransition={[Function]}
+            className="modal"
+            containerClassName="modal-open"
+            enforceFocus={true}
+            keyboard={true}
+            manager={
+              BootstrapModalManager {
+                "adjustAndStore": [Function],
+                "containers": Array [],
+                "data": Array [],
+                "handleContainerOverflow": true,
+                "hideSiblingNodes": true,
+                "modals": Array [],
+                "restore": [Function],
+                "scrollbarSize": 0,
+              }
+            }
+            onClick={[Function]}
+            onEnter={[Function]}
+            onEntered={[Function]}
+            onEntering={[Function]}
+            onExited={[Function]}
+            onHide={[Function]}
+            onMouseUp={[Function]}
+            renderBackdrop={[Function]}
+            restoreFocus={true}
+            role="dialog"
+            show={false}
+            style={Object {}}
+            transition={[Function]}
+          />
+        </Modal>
+      </Bootstrap(Modal)>
+    </ChangeIdeaModal>
+  </div>
+</IdeasDashboard>
 `;
