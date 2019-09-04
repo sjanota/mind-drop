@@ -59,8 +59,8 @@ export default function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel:
   React.useEffect(resetValue, [value]);
 
   const withClear = (cb) => (arg) => {
+    cb(arg);
     resetValue();
-    cb(arg)
   };
   const onSave = withClear(onSaveUpstream);
   const onCancel = withClear(onCancelUpstream);

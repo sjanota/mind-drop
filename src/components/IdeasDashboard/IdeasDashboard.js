@@ -53,7 +53,7 @@ const reducer = (state, action) => {
       return {...state, showModal: false, editItem: null};
     case CHANGE_APPLIED: {
       const cards = state.editItem != null
-        ? replaceOnList(state.cards, state.cards.indexOf(state.editItem), action.value)
+        ? replaceOnList(state.cards, state.editItem, action.value)
         : addToList(state.cards, action.value);
       return itemsChanged({...state, showModal: false, editItem: null, cards});
     }
