@@ -4,9 +4,16 @@ import BootstrapNavbar from "react-bootstrap/Navbar";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import Brand from "./Brand/Brand";
+import LabelsInput from "../common/LabelsInput/LabelsInput";
+import addToList from "../../util/immutable/addToList";
+import removeFromList from "../../util/immutable/removeFromList";
+import PropTypes from 'prop-types';
 
 
-function Navbar({labelFilter, setLabelFilter}) {
+export default function Navbar({labelFilter, setLabelFilter}) {
+  const addLabel = label => setLabelFilter(old => addToList(old, label));
+  const deleteLabel = label => setLabelFilter(old => removeFromList(old, label));
+
   return <BootstrapNavbar bg={"dark"} variant={"dark"} className={"Navbar"}>
     <Brand/>
       <Form>
@@ -14,14 +21,13 @@ function Navbar({labelFilter, setLabelFilter}) {
           <InputGroup.Prepend>
             <InputGroup.Text id="basic-addon1">Label</InputGroup.Text>
           </InputGroup.Prepend>
-          <Form.Control as={"select"} onChange={e => setLabelFilter(e.target.value)} value={labelFilter}>
-            <option value={""}>All</option>
-            <option>Dla mnie</option>
-            <option>Dla kogoś</option>
-          </Form.Control>
+          <LabelsInput labels={labelFilter} addLabel={addLabel} deleteLabel={deleteLabel}/>
         </InputGroup>
     </Form>
   </BootstrapNavbar>
 }
 
-export default Navbar;
+Navbar.propTypes = {
+  labelFilter: PropTypes.arrayOf(PropTypes.string).isRequired,
+  setLabelFilter: PropTypes.func.isRequired
+};

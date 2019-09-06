@@ -1,4 +1,4 @@
-import React, {useReducer, useEffect} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import './IdeasDashboard.css';
 import ChangeCardModal from "./ChangeIdeaModal/ChangeIdeaModal";
 import AddCardCard from "./AddIdeaCard/AddIdeaCard";
@@ -34,9 +34,12 @@ const CHANGE_CANCELED = 'CHANGE_CANCELED';
 const changeCanceled = () => ({type: CHANGE_CANCELED});
 
 const itemsChanged = (state) => {
+  const filteredCards = state.labelFilter.length > 0
+    ? state.cards.filter(c => c.labels.indexOf(state.labelFilter[0]) !== -1)
+    : state.cards;
   return {
     ...state,
-    filteredCards: state.labelFilter ? state.cards.filter(c => c.labels.indexOf(state.labelFilter) !== -1) : state.cards
+    filteredCards
   }
 };
 
@@ -68,6 +71,7 @@ const initialState = {
   showModal: false,
   modalState: emptyCard,
   editItem: null,
+  labelFilter: [],
   filteredCards: [],
   cards: []
 };
@@ -108,7 +112,7 @@ export default function IdeasDashboard({labelFilter, initialCards}) {
 }
 
 IdeasDashboard.propTypes = {
-  labelFilter: PropTypes.string.isRequired,
+  labelFilter: PropTypes.arrayOf(PropTypes.string).isRequired,
   initialCards: PropTypes.array
 };
 
