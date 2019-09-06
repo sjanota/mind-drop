@@ -25,28 +25,28 @@ const cards = [
 ];
 
 it('shows all cards on empty filter', () => {
-  const component = mount(<IdeasDashboard labelFilter={""} initialCards={cards}/>);
+  const component = mount(<IdeasDashboard labelFilter={[]} initialCards={cards}/>);
   expect(component.find(IdeaCard)).toHaveLength(cards.length);
   expect(component).toMatchSnapshot()
 });
 
 it('shows no cards on non matching filter', () => {
-  const component = mount(<IdeasDashboard labelFilter={label3} initialCards={cards}/>);
+  const component = mount(<IdeasDashboard labelFilter={[label3]} initialCards={cards}/>);
   expect(component.find(IdeaCard)).toHaveLength(0);
   expect(component).toMatchSnapshot()
 });
 
 it('shows filtered cards if filter is applied', () => {
-  const component = mount(<IdeasDashboard labelFilter={label2} initialCards={cards}/>);
+  const component = mount(<IdeasDashboard labelFilter={[label2]} initialCards={cards}/>);
   expect(component.find(IdeaCard)).toHaveLength(2);
   expect(component).toMatchSnapshot()
 });
 
 it('applies new filter when changed', () => {
-  const component = mount(<IdeasDashboard labelFilter={label3} initialCards={cards}/>);
+  const component = mount(<IdeasDashboard labelFilter={[label3]} initialCards={cards}/>);
   expect(component.find(IdeaCard)).toHaveLength(0);
 
-  component.setProps({initialCards: cards, labelFilter: label1});
+  component.setProps({initialCards: cards, labelFilter: [label1]});
   component.update();
   expect(component.find(IdeaCard)).toHaveLength(2);
 });

@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import Cards from "../IdeasDashboard/IdeasDashboard";
 
 function App() {
-  const [labelFilter, setLabelFilter] = React.useState("");
+  const [labelFilter, setLabelFilter] = React.useState([]);
 
   return (
     <div className="App">
