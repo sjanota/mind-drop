@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/mind-drop/static/css/main.0e65f3f6.chunk.css",
-    "main.js": "/mind-drop/static/js/main.975495e4.chunk.js",
-    "main.js.map": "/mind-drop/static/js/main.975495e4.chunk.js.map",
+    "main.js": "/mind-drop/static/js/main.764ca147.chunk.js",
+    "main.js.map": "/mind-drop/static/js/main.764ca147.chunk.js.map",
     "runtime~main.js": "/mind-drop/static/js/runtime~main.0f4dc156.js",
     "runtime~main.js.map": "/mind-drop/static/js/runtime~main.0f4dc156.js.map",
     "static/css/2.22a7d4ef.chunk.css": "/mind-drop/static/css/2.22a7d4ef.chunk.css",
     "static/js/2.7986f91e.chunk.js": "/mind-drop/static/js/2.7986f91e.chunk.js",
     "static/js/2.7986f91e.chunk.js.map": "/mind-drop/static/js/2.7986f91e.chunk.js.map",
     "index.html": "/mind-drop/index.html",
-    "precache-manifest.b1ede6ee6511652603bb4c1ce8ea5503.js": "/mind-drop/precache-manifest.b1ede6ee6511652603bb4c1ce8ea5503.js",
+    "precache-manifest.b543e93b8a855aad78a89ea5b84470ad.js": "/mind-drop/precache-manifest.b543e93b8a855aad78a89ea5b84470ad.js",
     "service-worker.js": "/mind-drop/service-worker.js",
     "static/css/2.22a7d4ef.chunk.css.map": "/mind-drop/static/css/2.22a7d4ef.chunk.css.map",
     "static/css/main.0e65f3f6.chunk.css.map": "/mind-drop/static/css/main.0e65f3f6.chunk.css.map"
