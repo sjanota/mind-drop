@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Navbar from "../Navbar/Navbar";
-import IdeasDashboard from "../IdeasDashboard/IdeasDashboard";
+import IdeasDashboard from "../IdeasDashboard/Container/Container";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 function App() {

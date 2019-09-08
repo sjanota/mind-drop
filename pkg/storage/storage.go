@@ -4,6 +4,8 @@ import (
 	"context"
 	"encoding/json"
 	"github.com/mongodb/mongo-go-driver/mongo"
+	"github.com/mongodb/mongo-go-driver/options"
+	"github.com/sjanota/mind-drop/pkg/model"
 	"log"
 	"net/http"
 )
@@ -47,7 +49,7 @@ func (s *Storage) getAppState(rsp http.ResponseWriter, req *http.Request) {
 		"name": "global",
 	}
 	err := s.Find(req.Context(), filter, func(d decodeFunc) error {
-		data := make(map[string]interface{})
+		data := &model.AppState{}
 		err := d(&data)
 		if err != nil {
 			return err
@@ -72,12 +74,11 @@ func (s *Storage) setAppState(rsp http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	_, err = s.collection.InsertOne(req.Context(), data)
+	_, err = s.collection.ReplaceOne(req.Context(), doc{"name": "global"}, data, options.Replace().SetUpsert(true))
 
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	rsp.WriteHeader(201)
 }
 

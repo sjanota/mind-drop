@@ -1,6 +1,7 @@
 package server
 
 import (
+	"github.com/gorilla/handlers"
 	"log"
 	"net/http"
 	"os"
@@ -13,6 +14,9 @@ func Run(handler http.HandlerFunc) {
 	if port == "" {
 		port = defaultPort
 	}
-	http.Handle("/app-data", handler)
+	http.Handle("/app-data", handlers.CORS(
+		handlers.AllowedOrigins([]string{"*"}),
+		handlers.AllowedHeaders([]string{"authorization"}),
+	)(handler))
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
