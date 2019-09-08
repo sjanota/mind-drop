@@ -87,6 +87,7 @@ export default function IdeasDashboard({labelFilter, initialCards}) {
   }, [labelFilter]);
 
   useEffect(() => {
+    console.log("store", state.cards);
     localStorage.setItem('cards', JSON.stringify(state.cards));
   }, [state.cards]);
 
@@ -117,5 +118,5 @@ IdeasDashboard.propTypes = {
 };
 
 IdeasDashboard.defaultProps = {
-  initialCards: []
+  initialCards: null
 };
