@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/auth0-spa-js": "^1.2.3",
     "@primer/octicons-react": "^9.1.1",
     "bootstrap": "^4.3.1",
     "enzyme": "^3.10.0",
@@ -13,6 +14,8 @@
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
     "react-markdown": "^4.2.1",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.1.1",
     "react-test-renderer": "^16.9.0"
   },

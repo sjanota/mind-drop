@@ -8,6 +8,7 @@ import LabelsInput from "../common/LabelsInput/LabelsInput";
 import addToList from "../../util/immutable/addToList";
 import removeFromList from "../../util/immutable/removeFromList";
 import PropTypes from 'prop-types';
+import Login from "./Login/Login";
 
 
 export default function Navbar({labelFilter, setLabelFilter}) {
@@ -24,6 +25,7 @@ export default function Navbar({labelFilter, setLabelFilter}) {
           <LabelsInput labels={labelFilter} addLabel={addLabel} deleteLabel={deleteLabel}/>
         </InputGroup>
     </Form>
+    <Login/>
   </BootstrapNavbar>
 }
 

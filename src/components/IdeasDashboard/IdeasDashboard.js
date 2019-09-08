@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useEffect, useReducer} from 'react';
 import './IdeasDashboard.css';
 import ChangeCardModal from "./ChangeIdeaModal/ChangeIdeaModal";
@@ -14,6 +15,9 @@ const emptyCard = {
   text: "",
   labels: []
 };
+
+const ITEMS_RELOADED = 'ITEMS_RELOADED';
+const itemsReloaded = (cards) => ({type: ITEMS_RELOADED, value: cards});
 
 const ITEMS_FILTERED = 'ITEMS_FILTERED';
 const itemsFiltered = (labelFilter) => ({type: ITEMS_FILTERED, value: labelFilter});
@@ -45,21 +49,27 @@ const itemsChanged = (state) => {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case ITEMS_RELOADED:
+      return itemsChanged({...state, cards: action.value});
     case ITEMS_FILTERED:
       return itemsChanged({...state, labelFilter: action.value});
     case ADD_ITEM:
       return {...state, showModal: true, modalState: emptyCard};
     case EDIT_ITEM:
       return {...state, showModal: true, modalState: action.value, editItem: state.cards.indexOf(action.value)};
-    case ITEM_DELETED:
-      return itemsChanged({...state, cards: removeFromList(state.cards, action.value)});
+    case ITEM_DELETED: {
+      const newCards = removeFromList(state.cards, action.value);
+      state.setCards(newCards);
+      return itemsChanged({...state, cards: newCards});
+    }
     case CHANGE_CANCELED:
       return {...state, showModal: false, editItem: null};
     case CHANGE_APPLIED: {
-      const cards = state.editItem != null
+      const newCards = state.editItem != null
         ? replaceOnList(state.cards, state.editItem, action.value)
         : addToList(state.cards, action.value);
-      return itemsChanged({...state, showModal: false, editItem: null, cards});
+      state.setCards(newCards);
+      return itemsChanged({...state, showModal: false, editItem: null, newCards});
     }
     default:
       console.log("Unexpected action", action);
@@ -77,18 +87,14 @@ const initialState = {
 };
 
 
-export default function IdeasDashboard({labelFilter, initialCards}) {
-  const cards = initialCards || JSON
-    .parse(localStorage.getItem('cards'))
-    || [];
-  const [state, dispatch] = useReducer(reducer, {...initialState, cards}, itemsChanged);
+export default function IdeasDashboard({labelFilter, cards, setCards}) {
+  const [state, dispatch] = useReducer(reducer, {...initialState, cards: cards, setCards}, itemsChanged);
   useEffect(() => {
     dispatch(itemsFiltered(labelFilter))
   }, [labelFilter]);
-
   useEffect(() => {
-    localStorage.setItem('cards', JSON.stringify(state.cards));
-  }, [state.cards]);
+    dispatch(itemsReloaded(cards));
+  }, [cards]);
 
   return <div className={"IdeasDashboard"}>
     <CardColumns>
