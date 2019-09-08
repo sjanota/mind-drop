@@ -1,4 +1,5 @@
 {
   "domain": "summer-sun-3021.auth0.com",
-  "clientId": "Az6pH4SJN4jvt6rXiJBRC0DnYG_v3lZ6"
+  "clientId": "Az6pH4SJN4jvt6rXiJBRC0DnYG_v3lZ6",
+  "audience": "backend"
 }
