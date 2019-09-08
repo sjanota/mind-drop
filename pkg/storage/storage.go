@@ -53,15 +53,11 @@ func (s *Storage) getAppState(rsp http.ResponseWriter, req *http.Request) {
 			return err
 		}
 
-		rsp.Header().Set("content-type", "application/json")
 		enc := json.NewEncoder(rsp)
-		err = enc.Encode(&data)
-		if err != nil {
-			return err
-		}
 
 		rsp.WriteHeader(200)
-		return nil
+		rsp.Header().Set("content-type", "application/json")
+		return enc.Encode(&data)
 	})
 	if err != nil {
 		log.Fatal(err)
