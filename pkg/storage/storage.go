@@ -22,7 +22,7 @@ type Storage struct {
 }
 
 func New(uri string) (*Storage, error) {
-	opts := options.Client().ApplyURI(uri)
+	opts := options.Client().ApplyURI(uri).SetRetryWrites(false)
 	client, err := mongo.Connect(context.Background(), opts)
 	if err != nil {
 		return nil, err
