@@ -1,8 +1,8 @@
-.MarkdownViewer .ListItem li.checkboxed {
+.MarkdownViewer li.checkboxed {
     list-style: none;
     margin-left: -20px;
 }
 
-.MarkdownViewer .ListItem li.checkboxed input[type=checkbox]{
+.MarkdownViewer li.checkboxed input[type=checkbox]{
     margin-right: 5px;
 }
