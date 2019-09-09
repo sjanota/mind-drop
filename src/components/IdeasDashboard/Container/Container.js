@@ -18,7 +18,6 @@ export default function Container(props) {
         }
       });
       const responseData = await response.json();
-      console.log(responseData);
       setCards(responseData.cards)
     } catch (error) {
       console.error(error);
@@ -49,7 +48,7 @@ export default function Container(props) {
 
   const setAndSaveCards = (cards) => {
     postCards(cards);
-    getCards();
+    setCards(cards)
   };
 
   return <div className={"Container"}>
