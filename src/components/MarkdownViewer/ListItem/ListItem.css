@@ -3,6 +3,11 @@
     margin-left: -20px;
 }
 
+.MarkdownViewer li.checkboxed > span {
+    display: inline-flex;
+    align-items: center;
+}
+
 .MarkdownViewer li.checkboxed input[type=checkbox]{
     margin-right: 5px;
 }
