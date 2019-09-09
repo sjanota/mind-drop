@@ -28,7 +28,7 @@ export default function ListItem({source, setSource, ...props}) {
     className = "checkboxed"
   }
 
-  return <li className={className}><span>{checkbox}{props.children}</span></li>;
+  return <li className={className}>{checkbox}{props.children}</li>;
 }
 
 ListItem.propTypes = {
