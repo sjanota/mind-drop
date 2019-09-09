@@ -9,12 +9,10 @@ import (
 	"go.mongodb.org/mongo-driver/x/mongo/driver/connstring"
 	"log"
 	"net/http"
-	"net/url"
-	"os"
 )
 
 const (
-	defaultDatabaseName            = "mind-drop"
+	defaultDatabaseName     = "mind-drop"
 	appStatesCollectionName = "app-states"
 )
 
@@ -34,7 +32,7 @@ func New(uri string) (*Storage, error) {
 	if err != nil {
 		return nil, err
 	}
-	
+
 	database := client.Database(cs.Database)
 	return &Storage{
 		db: database,
