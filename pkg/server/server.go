@@ -31,6 +31,11 @@ type JSONWebKeys struct {
 
 const defaultPort = "8000"
 
+const (
+	issuer = "https://soft-poetry-3210.eu.auth0.com/"
+	audience = "https://minddrop.herokuapp.com"
+)
+
 func Run(handler http.HandlerFunc) {
 	port := os.Getenv("PORT")
 	if port == "" {
@@ -40,14 +45,12 @@ func Run(handler http.HandlerFunc) {
 	jwtMiddleware := jwtmiddleware.New(jwtmiddleware.Options{
 		ValidationKeyGetter: func(token *jwt.Token) (interface{}, error) {
 			// Verify 'aud' claim
-			aud := "backend"
-			checkAud := token.Claims.(jwt.MapClaims).VerifyAudience(aud, false)
+			checkAud := token.Claims.(jwt.MapClaims).VerifyAudience(audience, false)
 			if !checkAud {
 				return token, errors.New("Invalid audience.")
 			}
 			// Verify 'iss' claim
-			iss := "https://soft-poetry-3210.eu.auth0.com/"
-			checkIss := token.Claims.(jwt.MapClaims).VerifyIssuer(iss, false)
+			checkIss := token.Claims.(jwt.MapClaims).VerifyIssuer(issuer, false)
 			if !checkIss {
 				return token, errors.New("Invalid issuer.")
 			}
@@ -78,7 +81,7 @@ func Run(handler http.HandlerFunc) {
 
 func getPemCert(token *jwt.Token) (string, error) {
 	cert := ""
-	resp, err := http.Get("https://minddrop.herokuapp.com/.well-known/jwks.json")
+	resp, err := http.Get(issuer+".well-known/jwks.json")
 
 	if err != nil {
 		return cert, err
