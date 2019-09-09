@@ -46,7 +46,7 @@ func Run(handler http.HandlerFunc) {
 				return token, errors.New("Invalid audience.")
 			}
 			// Verify 'iss' claim
-			iss := "https://minddrop.herokuapp.com"
+			iss := "https://soft-poetry-3210.eu.auth0.com/"
 			checkIss := token.Claims.(jwt.MapClaims).VerifyIssuer(iss, false)
 			if !checkIss {
 				return token, errors.New("Invalid issuer.")
