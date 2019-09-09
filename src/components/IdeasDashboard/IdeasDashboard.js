@@ -77,7 +77,6 @@ const reducer = (state, action) => {
     case ITEM_TEXT_SET: {
       const idx = state.cards.indexOf(action.item);
       if (idx <= -1) {
-        console.log("no such element");
         return state
       }
       const item = state.cards[idx];
