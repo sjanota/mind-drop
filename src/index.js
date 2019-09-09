@@ -25,6 +25,7 @@ ReactDOM.render(
     redirect_uri={window.location}
     onRedirectCallback={onRedirectCallback}
     audience={config.audience}
+    returnTo={window.location}
   >
     <BrowserRouter>
       <App/>
