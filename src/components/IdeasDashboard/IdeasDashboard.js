@@ -37,6 +37,9 @@ const changeApplied = (item) => ({type: CHANGE_APPLIED, value: item});
 const CHANGE_CANCELED = 'CHANGE_CANCELED';
 const changeCanceled = () => ({type: CHANGE_CANCELED});
 
+const ITEM_TEXT_SET = 'ITEM_TEXT_SET';
+const itemTextSet = (item, text) => ({type: ITEM_TEXT_SET, item, text});
+
 const itemsChanged = (state) => {
   const filteredCards = state.labelFilter.length > 0
     ? state.cards.filter(c => c.labels.indexOf(state.labelFilter[0]) !== -1)
@@ -69,13 +72,33 @@ const reducer = (state, action) => {
         ? replaceOnList(state.cards, state.editItem, action.value)
         : addToList(state.cards, action.value);
       state.setCards(newCards);
-      return itemsChanged({...state, showModal: false, editItem: null, newCards});
+      return itemsChanged({...state, showModal: false, editItem: null, cards: newCards});
+    }
+    case ITEM_TEXT_SET: {
+      const idx = state.cards.indexOf(action.item);
+      if (idx <= -1) {
+        console.log("no such element");
+        return state
+      }
+      const item = state.cards[idx];
+      const newCards = replaceOnList(state.cards, idx, {...item, text: action.text});
+      state.setCards(newCards);
+      return itemsChanged({...state, cards: newCards})
     }
     default:
       console.log("Unexpected action", action);
       return state;
   }
 };
+
+function logger(reducer) {
+  return function (state, action) {
+    console.log("Before", state, action);
+    const result = reducer(state, action);
+    console.log("After", state, action);
+    return result
+  }
+}
 
 const initialState = {
   showModal: false,
@@ -88,7 +111,7 @@ const initialState = {
 
 
 export default function IdeasDashboard({labelFilter, cards, setCards}) {
-  const [state, dispatch] = useReducer(reducer, {...initialState, cards: cards, setCards}, itemsChanged);
+  const [state, dispatch] = useReducer(logger(reducer), {...initialState, cards: cards, setCards}, itemsChanged);
   useEffect(() => {
     dispatch(itemsFiltered(labelFilter))
   }, [labelFilter]);
@@ -103,6 +126,7 @@ export default function IdeasDashboard({labelFilter, cards, setCards}) {
       card={card}
       onDelete={() => dispatch(itemDeleted(card))}
       onEdit={() => dispatch(editItem(card))}
+      setText={(text) => dispatch(itemTextSet(card, text))}
     />)}
     <AddCardCard
       onClick={() => dispatch(addItem())}

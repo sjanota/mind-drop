@@ -4,3 +4,11 @@
 .IdeasDashboard .IdeaCard .card-text {
     white-space: pre-wrap;
 }
+
+.IdeasDashboard .IdeaCard li.checkboxed {
+    list-style: none;
+}
+
+.IdeasDashboard .IdeaCard li.checkboxed input[type=checkbox]{
+    margin-right: 5px;
+}

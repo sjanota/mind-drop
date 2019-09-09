@@ -7,7 +7,7 @@ import (
 	"os"
 )
 
-const defaultStorageUri = "mongodb://localhost:32768"
+const defaultStorageUri = "mongodb://localhost:32768/mind-drop"
 
 func main() {
 	storageUri := os.Getenv("MONGODB_URI")
