@@ -46,7 +46,7 @@ func Run(handler http.HandlerFunc) {
 				return token, errors.New("Invalid audience.")
 			}
 			// Verify 'iss' claim
-			iss := "https://summer-sun-3021.auth0.com/"
+			iss := "https://minddrop.herokuapp.com"
 			checkIss := token.Claims.(jwt.MapClaims).VerifyIssuer(iss, false)
 			if !checkIss {
 				return token, errors.New("Invalid issuer.")
@@ -78,7 +78,7 @@ func Run(handler http.HandlerFunc) {
 
 func getPemCert(token *jwt.Token) (string, error) {
 	cert := ""
-	resp, err := http.Get("https://summer-sun-3021.auth0.com/.well-known/jwks.json")
+	resp, err := http.Get("https://minddrop.herokuapp.com/.well-known/jwks.json")
 
 	if err != nil {
 		return cert, err
