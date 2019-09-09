@@ -12,7 +12,7 @@ export default function Container(props) {
   const getCards = async () => {
     try {
       const token = await getTokenSilently();
-      const response = await fetch("http://localhost:8000/app-data", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/app-data`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -34,7 +34,7 @@ export default function Container(props) {
   const postCards = async (cards) => {
     try {
       const token = await getTokenSilently();
-      const response = await fetch("http://localhost:8000/app-data", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/app-data`, {
         method: 'POST',
         body: JSON.stringify({name: "global", cards}),
         headers: {
