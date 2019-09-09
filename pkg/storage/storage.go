@@ -3,9 +3,9 @@ package storage
 import (
 	"context"
 	"encoding/json"
-	"github.com/mongodb/mongo-go-driver/mongo"
-	"github.com/mongodb/mongo-go-driver/options"
 	"github.com/sjanota/mind-drop/pkg/model"
+	"go.mongodb.org/mongo-driver/mongo"
+	"go.mongodb.org/mongo-driver/mongo/options"
 	"log"
 	"net/http"
 )
@@ -21,7 +21,8 @@ type Storage struct {
 }
 
 func New(uri string) (*Storage, error) {
-	client, err := mongo.Connect(context.Background(), uri)
+	opts := options.Client().ApplyURI(uri)
+	client, err := mongo.Connect(context.Background(), opts)
 	if err != nil {
 		return nil, err
 	}
