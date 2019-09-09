@@ -6,12 +6,15 @@ import (
 	"github.com/sjanota/mind-drop/pkg/model"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"go.mongodb.org/mongo-driver/x/mongo/driver/connstring"
 	"log"
 	"net/http"
+	"net/url"
+	"os"
 )
 
 const (
-	databaseName            = "mind-drop"
+	defaultDatabaseName            = "mind-drop"
 	appStatesCollectionName = "app-states"
 )
 
@@ -27,7 +30,12 @@ func New(uri string) (*Storage, error) {
 		return nil, err
 	}
 
-	database := client.Database(databaseName)
+	cs, err := connstring.Parse(uri)
+	if err != nil {
+		return nil, err
+	}
+	
+	database := client.Database(cs.Database)
 	return &Storage{
 		db: database,
 		repository: &repository{
