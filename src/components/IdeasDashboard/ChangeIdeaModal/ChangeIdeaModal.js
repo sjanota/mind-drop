@@ -65,7 +65,13 @@ export default function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel:
   const onSave = withClear(onSaveUpstream);
   const onCancel = withClear(onCancelUpstream);
 
-  return <Modal show={show} onHide={onCancel} centered onEntered={() => firstInputRef.current.focus()}>
+  return <Modal
+    show={show}
+    onHide={onCancel}
+    centered
+    onEntered={() => firstInputRef.current.focus()}
+    size={"lg"}
+  >
     <Modal.Header closeButton>
       <Modal.Title>New card</Modal.Title>
     </Modal.Header>
@@ -83,7 +89,7 @@ export default function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel:
           </Col>
         </Form.Group>
         <Form.Group as={Row}>
-          <Form.Label column sm={2}>Label:</Form.Label>
+          <Form.Label column sm={2}>Labels:</Form.Label>
           <Col>
             <LabelsInput
               labels={state.labels}
@@ -97,7 +103,7 @@ export default function ChangeIdeaModal({show, onSave: onSaveUpstream, onCancel:
           value={state.text}
           onChange={(e) => dispatch(textSet((e.target.value)))}
           as={"textarea"}
-          rows={5}
+          rows={20}
         />
       </Form>
     </Modal.Body>
